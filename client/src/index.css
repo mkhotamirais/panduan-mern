@@ -7,16 +7,19 @@ html {
 }
 
 #fccBook table,
-#reduxThunk table {
+#reduxThunk table,
+#reduxRtk table {
   @apply w-full border-separate;
 }
 
 #fccBook table th,
-#reduxThunk table th {
+#reduxThunk table th,
+#reduxRtk table th {
   @apply font-medium py-1 border rounded;
 }
 
 #fccBook table td,
-#reduxThunk table td {
+#reduxThunk table td,
+#reduxRtk table td {
   @apply border rounded text-center;
 }

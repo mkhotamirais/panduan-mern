@@ -1,12 +1,36 @@
 {
   "products": [
     {
-      "id": "4482df4b-9a80-425d-9adb-4d278b336d09",
+      "id": "5cdbad2a-9da6-42b3-a562-e7b3bcc59e6b",
       "name": "ahmad",
-      "price": "2000",
+      "price": "1000",
+      "description": "asdf",
+      "createdAt": "2024-03-13T18:14:21.439Z",
+      "updatedAt": "2024-03-13T18:14:21.439Z"
+    },
+    {
+      "id": "92da5ac1-ca54-45c7-aba8-39bdcc6bb430",
+      "name": "siti",
+      "price": "124",
       "description": "adf",
-      "createdAt": "2024-03-13T09:35:52.531Z",
-      "updatedAt": "2024-03-13T09:35:52.531Z"
+      "createdAt": "2024-03-13T18:14:29.935Z",
+      "updatedAt": "2024-03-13T18:14:29.935Z"
+    },
+    {
+      "id": "861c7514-e433-47bd-b55a-6bf67ad34745",
+      "name": "budi yp",
+      "price": "1234",
+      "description": "a;lsdkf",
+      "createdAt": "2024-03-13T18:14:38.186Z",
+      "updatedAt": "2024-03-13T18:14:50.795Z"
+    },
+    {
+      "id": "8c23cc8a-6199-4dc2-9d7e-52129c17f5b5",
+      "name": "intan",
+      "price": "89",
+      "description": "klj",
+      "createdAt": "2024-03-13T18:15:09.289Z",
+      "updatedAt": "2024-03-13T18:15:09.289Z"
     }
   ]
 }

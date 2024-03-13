@@ -26,9 +26,14 @@ import { getProductsThunk } from "./app/features/reduxThunk/reduxThunkSlice.js";
 import ReduxThunkPost from "./pages/merns/reduxThunk/product/ReduxThunkPost.jsx";
 import ReduxThunkUpdate from "./pages/merns/reduxThunk/product/ReduxThunkUpdate.jsx";
 import ReduxThunkDetail from "./pages/merns/reduxThunk/product/ReduxThunkDetail.jsx";
+import { productApiSlice } from "./app/features/reduxRtk/productApiSlice.js";
+import ReduxRtkProductPost from "./pages/merns/reduxRtk/product/ReduxRtkProductPost.jsx";
+import ReduxRtkProductDetail from "./pages/merns/reduxRtk/product/ReduxRtkProductDetail.jsx";
+import ReduxRtkProductUpdate from "./pages/merns/reduxRtk/product/ReduxRtkProductUpdate.jsx";
 
 store.dispatch(v1FccGetBooks());
 store.dispatch(getProductsThunk());
+store.dispatch(productApiSlice.endpoints.getProducts.initiate());
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -56,7 +61,12 @@ const router = createBrowserRouter(
           </Route>
           <Route path="redux-rtk" element={<ReduxRtk />}>
             <Route index element={<ReduxRtkHome />} />
-            <Route path="product" element={<ReduxRtkProduct />} />
+            <Route path="product">
+              <Route index element={<ReduxRtkProduct />} />
+              <Route path="detail/:id" element={<ReduxRtkProductDetail />} />
+              <Route path="update/:id" element={<ReduxRtkProductUpdate />} />
+              <Route path="post" element={<ReduxRtkProductPost />} />
+            </Route>
           </Route>
         </Route>
       </Route>

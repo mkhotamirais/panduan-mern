@@ -48,7 +48,7 @@ const ReduxThunkProduct = () => {
           </table>
         );
       }
-    } else if (products.length == 0) content = "no content";
+    } else if (products.length == 0) content = <div className="flex justify-center mt-5 italic">no content</div>;
   }
   return (
     <div>
