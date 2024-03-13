@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  @apply scroll-smooth;
+}
+
+#fccBook table {
+  @apply w-full border-separate;
+}
+
+#fccBook table th {
+  @apply font-medium py-1 border rounded;
+}
+
+#fccBook table td {
+  @apply border rounded text-center;
+}
