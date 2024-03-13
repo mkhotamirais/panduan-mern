@@ -5,7 +5,7 @@ import Logo from "./Logo";
 import { Link, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 
-const basicList = ["freecodecamp", "dua dua", "tiga tiga tiga"];
+const basicList = ["freecodecamp", "redux thunk", "redux rtk"];
 const filesList = ["enam", "tujuh", "delapan"];
 const authList = ["sembilan", "sepuhl"];
 
@@ -13,6 +13,8 @@ export const SidebarContentList = ({ title, data }) => {
   const location = useLocation();
   const pathArr = location.pathname.split("/");
   const [active, setActive] = useState(null);
+  const dispatch = useDispatch();
+
   useEffect(() => {
     setActive(pathArr[1]);
   }, [pathArr]);
@@ -21,9 +23,12 @@ export const SidebarContentList = ({ title, data }) => {
       <h3 className="font-medium mb-1">{title}</h3>
       {data.map((sl, i) => (
         <Link
-          onClick={() => setActive(i)}
+          onClick={() => {
+            setActive(i);
+            dispatch(setOpenSidebar());
+          }}
           key={sl}
-          to={sl}
+          to={sl.split(" ").join("-")}
           className={`${active === sl ? "text-blue-600" : ""} py-1 text-sm hover:text-blue-500`}
         >
           {sl}
@@ -68,7 +73,7 @@ export const SidebarCollapse = ({ children }) => {
           <Logo className={"self-center"} />
           <div></div>
         </div>
-        <div className="border m-2 p-2">
+        <div className="m-2 p-2">
           <div>{children}</div>
         </div>
       </div>

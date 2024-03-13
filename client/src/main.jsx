@@ -16,8 +16,19 @@ import FccHome from "./pages/merns/freecodecamp/FccHome.jsx";
 import FccBookDetail from "./pages/merns/freecodecamp/book/FccBookDetail.jsx";
 import FccBookPost from "./pages/merns/freecodecamp/book/FccBookPost.jsx";
 import FccBookUpdate from "./pages/merns/freecodecamp/book/FccBookUpdate.jsx";
+import ReduxThunk from "./pages/merns/reduxThunk/ReduxThunk.jsx";
+import ReduxRtk from "./pages/merns/reduxRtk/ReduxRtk.jsx";
+import ReduxThunkHome from "./pages/merns/reduxThunk/ReduxThunkHome.jsx";
+import ReduxRtkHome from "./pages/merns/reduxRtk/ReduxRtkHome.jsx";
+import ReduxThunkProduct from "./pages/merns/reduxThunk/product/ReduxThunkProduct.jsx";
+import ReduxRtkProduct from "./pages/merns/reduxRtk/product/ReduxRtkProduct.jsx";
+import { getProductsThunk } from "./app/features/reduxThunk/reduxThunkSlice.js";
+import ReduxThunkPost from "./pages/merns/reduxThunk/product/ReduxThunkPost.jsx";
+import ReduxThunkUpdate from "./pages/merns/reduxThunk/product/ReduxThunkUpdate.jsx";
+import ReduxThunkDetail from "./pages/merns/reduxThunk/product/ReduxThunkDetail.jsx";
 
 store.dispatch(v1FccGetBooks());
+store.dispatch(getProductsThunk());
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -33,6 +44,19 @@ const router = createBrowserRouter(
               <Route path="detail/:id" element={<FccBookDetail />} />
               <Route path="update/:id" element={<FccBookUpdate />} />
             </Route>
+          </Route>
+          <Route path="redux-thunk" element={<ReduxThunk />}>
+            <Route index element={<ReduxThunkHome />} />
+            <Route path="product">
+              <Route index element={<ReduxThunkProduct />} />
+              <Route path="post" element={<ReduxThunkPost />} />
+              <Route path="update/:id" element={<ReduxThunkUpdate />} />
+              <Route path="detail/:id" element={<ReduxThunkDetail />} />
+            </Route>
+          </Route>
+          <Route path="redux-rtk" element={<ReduxRtk />}>
+            <Route index element={<ReduxRtkHome />} />
+            <Route path="product" element={<ReduxRtkProduct />} />
           </Route>
         </Route>
       </Route>

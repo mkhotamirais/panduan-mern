@@ -6,14 +6,17 @@ html {
   @apply scroll-smooth;
 }
 
-#fccBook table {
+#fccBook table,
+#reduxThunk table {
   @apply w-full border-separate;
 }
 
-#fccBook table th {
+#fccBook table th,
+#reduxThunk table th {
   @apply font-medium py-1 border rounded;
 }
 
-#fccBook table td {
+#fccBook table td,
+#reduxThunk table td {
   @apply border rounded text-center;
 }

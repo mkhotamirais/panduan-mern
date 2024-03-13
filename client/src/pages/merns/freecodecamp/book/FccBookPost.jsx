@@ -38,9 +38,7 @@ const FccBookPost = () => {
         });
     }
   };
-  useEffect(() => {
-    console.log(status);
-  }, [status]);
+
   return (
     <div>
       <form onSubmit={handlePost}>

@@ -1,9 +1,20 @@
 import { useEffect, useState } from "react";
-import { FaChevronRight, FaEdit, FaExclamationCircle, FaEye, FaHome, FaPlus, FaTimes, FaTrash } from "react-icons/fa";
+import {
+  FaChevronRight,
+  FaEdit,
+  FaExclamationCircle,
+  FaExternalLinkAlt,
+  FaEye,
+  FaHome,
+  FaPlus,
+  FaTimes,
+  FaTrash,
+} from "react-icons/fa";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa6";
 import { PiSpinner } from "react-icons/pi";
 import { Link, useLocation } from "react-router-dom";
 import { formatDistanceToNow, parseISO } from "date-fns";
+import { Button } from "./Tags";
 
 export const Loading = () => (
   <div className="flex justify-center mt-12">
@@ -61,7 +72,7 @@ export const Breadcrumb = ({ className }) => {
         .join("/");
     return (
       <Link to={to} key={p} className="hover:underline hover:opacity-70">
-        {p}
+        {p?.length ? p?.split("-").join(" ") : p}
         {i !== path.length - 1 ? <FaChevronRight className="inline-block text-xs mx-1 sm:mx-2 text-gray-400" /> : null}
       </Link>
     );
@@ -173,9 +184,40 @@ export const Modal = ({ onClose, children, id }) => {
           <FaTimes />
         </button>
         <div className="text-xs text-left text-gray-500 mr-8 mb-3">ID: {id}</div>
-        {children}
+        <div className="flex flex-col items-start gap-3">{children}</div>
       </div>
     </div>
   );
 };
 Modal.propTypes;
+
+export const ConfirmModalDelete = ({ onClose, onDelete }) => (
+  <div className="flex gap-1">
+    <form onSubmit={onDelete} className="relative">
+      <input type="checkbox" autoFocus className="absolute opacity-0" />
+      <Button type="submit" className={"bg-red-500 w-auto"}>
+        Delete
+      </Button>
+    </form>
+    <Button onClick={onClose} className={"w-auto"}>
+      Cancel
+    </Button>
+  </div>
+);
+ConfirmModalDelete.propTypes;
+
+export const ExternalRefBtn = ({ href, icon, text }) => (
+  <a
+    target="_blank"
+    rel="noopener noreferrer"
+    href={href}
+    className="border border-blue-500 rounded-md hover:bg-blue-600 text-blue-600 hover:text-white p-1 px-4 inline-flex items-center gap-1 capitalize transition-all duration-150"
+  >
+    {icon}
+    <div>{text}</div>
+    <sup>
+      <FaExternalLinkAlt className="text-[0.6rem]" />
+    </sup>
+  </a>
+);
+ExternalRefBtn.propTypes;

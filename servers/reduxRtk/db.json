@@ -1,0 +1,12 @@
+{
+  "products": [
+    {
+      "id": "4482df4b-9a80-425d-9adb-4d278b336d09",
+      "name": "ahmad",
+      "price": "2000",
+      "description": "adf",
+      "createdAt": "2024-03-13T09:35:52.531Z",
+      "updatedAt": "2024-03-13T09:35:52.531Z"
+    }
+  ]
+}
