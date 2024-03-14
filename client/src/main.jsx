@@ -34,7 +34,6 @@ import MysqlAuth from "./pages/mysqls/mysqlAuth/MysqlAuth.jsx";
 import MySFilesHome from "./pages/mysqls/mysqlFiles/MySFilesHome.jsx";
 import MySAuthHome from "./pages/mysqls/mysqlAuth/MySAuthHome.jsx";
 import MsbProduct from "./pages/mysqls/mysqlBasic/product/MsbProduct.jsx";
-import MsfProduct from "./pages/mysqls/mysqlFiles/product/MsfProduct.jsx";
 import MsaProduct from "./pages/mysqls/mysqlAuth/product/MsaProduct.jsx";
 import MsbProductPost from "./pages/mysqls/mysqlBasic/product/MsbProductPost.jsx";
 import MsbProductUpdate from "./pages/mysqls/mysqlBasic/product/MsbProductUpdate.jsx";
@@ -49,6 +48,10 @@ import MsrUserDetail from "./pages/mysqls/mysqlRelational/user/MsrUserDetail.jsx
 import MsrUserUpdate from "./pages/mysqls/mysqlRelational/user/MsrUserUpdate.jsx";
 import MsrProductDetail from "./pages/mysqls/mysqlRelational/product/MsrProductDetail.jsx";
 import MsrProductUpdate from "./pages/mysqls/mysqlRelational/product/MsrProductUpdate.jsx";
+import MsfUser from "./pages/mysqls/mysqlFiles/product/MsfUser";
+import MsfUserPost from "./pages/mysqls/mysqlFiles/product/MsfUserPost.jsx";
+import MsfUserDetail from "./pages/mysqls/mysqlFiles/product/MsfUserDetail.jsx";
+import MsfUserUpdate from "./pages/mysqls/mysqlFiles/product/MsfUserUpdate.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -95,7 +98,10 @@ const router = createBrowserRouter(
           <Route path="mysql-files" element={<MysqlFiles />}>
             <Route index element={<MySFilesHome />} />
             <Route path="product">
-              <Route index element={<MsfProduct />} />
+              <Route index element={<MsfUser />} />
+              <Route path="post" element={<MsfUserPost />} />
+              <Route path="detail/:id" element={<MsfUserDetail />} />
+              <Route path="update/:id" element={<MsfUserUpdate />} />
             </Route>
           </Route>
           <Route path="mysql-auth" element={<MysqlAuth />}>

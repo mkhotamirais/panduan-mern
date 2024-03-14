@@ -8,6 +8,7 @@ import mysqlBasicReducer from "./features/mysqlBasic/mysqlBasicSlice";
 // import { productApiSlice } from "./features/reduxRtk/productApiSlice";
 import msrProductReducer from "./features/mysqlRelational/msrProductSlice";
 import msrUserReducer from "./features/mysqlRelational/msrUserSlice";
+import msfUserReducer from "./features/mysqlFiles/msfUserSlice";
 
 export const store = configureStore({
   reducer: {
@@ -18,6 +19,7 @@ export const store = configureStore({
     mysqlBasic: mysqlBasicReducer,
     msrProduct: msrProductReducer,
     msrUser: msrUserReducer,
+    msfUser: msfUserReducer,
     [apiSlice.reducerPath]: apiSlice.reducer,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(apiSlice.middleware),
