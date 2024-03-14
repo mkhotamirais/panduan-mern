@@ -9,7 +9,6 @@ import { SnackbarProvider } from "notistack";
 import ErrorBoundary from "./ErrorBoundary.jsx";
 import Home from "./pages/Home.jsx";
 import Freecodecamp from "./pages/merns/freecodecamp/Freecodecamp.jsx";
-import { v1FccGetBooks } from "./app/features/freecodecamp/v1FccBookSlice.js";
 import HomePage from "./pages/merns/HomePage.jsx";
 import FccBook from "./pages/merns/freecodecamp/book/FccBook.jsx";
 import FccHome from "./pages/merns/freecodecamp/FccHome.jsx";
@@ -22,18 +21,24 @@ import ReduxThunkHome from "./pages/merns/reduxThunk/ReduxThunkHome.jsx";
 import ReduxRtkHome from "./pages/merns/reduxRtk/ReduxRtkHome.jsx";
 import ReduxThunkProduct from "./pages/merns/reduxThunk/product/ReduxThunkProduct.jsx";
 import ReduxRtkProduct from "./pages/merns/reduxRtk/product/ReduxRtkProduct.jsx";
-import { getProductsThunk } from "./app/features/reduxThunk/reduxThunkSlice.js";
 import ReduxThunkPost from "./pages/merns/reduxThunk/product/ReduxThunkPost.jsx";
 import ReduxThunkUpdate from "./pages/merns/reduxThunk/product/ReduxThunkUpdate.jsx";
 import ReduxThunkDetail from "./pages/merns/reduxThunk/product/ReduxThunkDetail.jsx";
-import { productApiSlice } from "./app/features/reduxRtk/productApiSlice.js";
 import ReduxRtkProductPost from "./pages/merns/reduxRtk/product/ReduxRtkProductPost.jsx";
 import ReduxRtkProductDetail from "./pages/merns/reduxRtk/product/ReduxRtkProductDetail.jsx";
 import ReduxRtkProductUpdate from "./pages/merns/reduxRtk/product/ReduxRtkProductUpdate.jsx";
-
-store.dispatch(v1FccGetBooks());
-store.dispatch(getProductsThunk());
-store.dispatch(productApiSlice.endpoints.getProducts.initiate());
+import MysqlBasic from "./pages/mysqls/mysqlBasic/MysqlBasic.jsx";
+import MySBasicHome from "./pages/mysqls/mysqlBasic/MySBasicHome.jsx";
+import MysqlFiles from "./pages/mysqls/mysqlFiles/MysqlFiles.jsx";
+import MysqlAuth from "./pages/mysqls/mysqlAuth/MysqlAuth.jsx";
+import MySFilesHome from "./pages/mysqls/mysqlFiles/MySFilesHome.jsx";
+import MySAuthHome from "./pages/mysqls/mysqlAuth/MySAuthHome.jsx";
+import MsbProduct from "./pages/mysqls/mysqlBasic/product/MsbProduct.jsx";
+import MsfProduct from "./pages/mysqls/mysqlFiles/product/MsfProduct.jsx";
+import MsaProduct from "./pages/mysqls/mysqlAuth/product/MsaProduct.jsx";
+import MsbProductPost from "./pages/mysqls/mysqlBasic/product/MsbProductPost.jsx";
+import MsbProductUpdate from "./pages/mysqls/mysqlBasic/product/MsbProductUpdate.jsx";
+import MsbProductDetail from "./pages/mysqls/mysqlBasic/product/MsbProductDetail.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -66,6 +71,27 @@ const router = createBrowserRouter(
               <Route path="detail/:id" element={<ReduxRtkProductDetail />} />
               <Route path="update/:id" element={<ReduxRtkProductUpdate />} />
               <Route path="post" element={<ReduxRtkProductPost />} />
+            </Route>
+          </Route>
+          <Route path="mysql-basic" element={<MysqlBasic />}>
+            <Route index element={<MySBasicHome />} />
+            <Route path="product">
+              <Route index element={<MsbProduct />} />
+              <Route path="post" element={<MsbProductPost />} />
+              <Route path="detail/:id" element={<MsbProductDetail />} />
+              <Route path="update/:id" element={<MsbProductUpdate />} />
+            </Route>
+          </Route>
+          <Route path="mysql-files" element={<MysqlFiles />}>
+            <Route index element={<MySFilesHome />} />
+            <Route path="product">
+              <Route index element={<MsfProduct />} />
+            </Route>
+          </Route>
+          <Route path="mysql-auth" element={<MysqlAuth />}>
+            <Route index element={<MySAuthHome />} />
+            <Route path="product">
+              <Route index element={<MsaProduct />} />
             </Route>
           </Route>
         </Route>

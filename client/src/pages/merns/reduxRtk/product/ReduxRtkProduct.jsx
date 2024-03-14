@@ -1,10 +1,10 @@
-import { useEffect } from "react";
-import { selectAllProducts, useGetProductsQuery } from "../../../../app/features/reduxRtk/productApiSlice";
+import { productApiSlice, selectAllProducts, useGetProductsQuery } from "../../../../app/features/reduxRtk/productApiSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { setSort, setView } from "../../../../app/features/reduxRtk/productRtkSlice";
 import { Err, GridCard, Loading, PostBtn } from "../../../../components/Components";
 import ReduxRtkTable from "./ReduxRtkTable";
 import ReduxRtkCard from "./ReduxRtkCard";
+import { useEffect } from "react";
 
 const ReduxRtkProduct = () => {
   const { isLoading, isSuccess, isError, error } = useGetProductsQuery();
@@ -13,19 +13,15 @@ const ReduxRtkProduct = () => {
   const { view, sort } = useSelector((state) => state.productRtk);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    console.log(products);
-  }, [products]);
+  // useEffect(() => {
+  //   dispatch(productApiSlice.endpoints.getProducts.initiate());
+  // }, [dispatch]);
 
   let sortedData;
   if (sort === "asc") sortedData = products?.slice().sort((a, b) => (a.name > b.name ? 1 : b.name > a.name ? -1 : 0));
   else if (sort === "desc") sortedData = products?.slice().sort((a, b) => (a.name > b.name ? -1 : b.name > a.name ? 1 : 0));
   else if (sort === "createdAt") sortedData = products?.slice().sort((a, b) => b?.createdAt?.localeCompare(a.createdAt));
   else if (sort === "updatedAt") sortedData = products?.slice().sort((a, b) => b?.updatedAt?.localeCompare(a.updatedAt));
-
-  useEffect(() => {
-    setView(JSON.parse(localStorage.getItem("view")) || "table");
-  }, []);
 
   let content;
   if (isLoading) content = <Loading />;
@@ -66,6 +62,7 @@ const ReduxRtkProduct = () => {
           <select
             name="view"
             id="view"
+            value={view}
             onChange={(e) => {
               dispatch(setView(e.target.value));
               localStorage.setItem("reduxThunkView", JSON.stringify(e.target.value));

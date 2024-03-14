@@ -1,14 +1,17 @@
 import { useDispatch, useSelector } from "react-redux";
 import FccBookCard from "./FccBookCard";
 import { Err, GridCard, Loading, PostBtn } from "../../../../components/Components";
-import { setSort } from "../../../../app/features/freecodecamp/v1FccBookSlice";
-import { useEffect, useState } from "react";
+import { setSort, setView, v1FccGetBooks } from "../../../../app/features/freecodecamp/v1FccBookSlice";
+import { useEffect } from "react";
 import FccBookTable from "./FccBookTable";
 
 const FccBook = () => {
-  const { data: books, status, error, sort } = useSelector((state) => state.v1FccBook);
+  const { data: books, status, error, sort, view } = useSelector((state) => state.v1FccBook);
   const dispatch = useDispatch();
-  const [view, setView] = useState("table");
+
+  useEffect(() => {
+    dispatch(v1FccGetBooks());
+  }, [dispatch]);
 
   let sortedData;
   if (sort === "asc") sortedData = books.slice().sort((a, b) => (a.title > b.title ? 1 : b.title > a.title ? -1 : 0));
@@ -46,10 +49,6 @@ const FccBook = () => {
     } else if (books.length == 0) content = <div className="text-center italic mt-5">Data empty</div>;
   }
 
-  useEffect(() => {
-    setView(JSON.parse(localStorage.getItem("fccBookView")));
-  }, []);
-
   return (
     <section id="fccBook">
       <div className="flex justify-between my-1 items-center">
@@ -58,8 +57,9 @@ const FccBook = () => {
           <select
             name="view"
             id="view"
+            value={view}
             onChange={(e) => {
-              setView(e.target.value);
+              dispatch(setView(e.target.value));
               localStorage.setItem("fccBookView", JSON.stringify(e.target.value));
             }}
             className="border border-blue-400 p-1 rounded"

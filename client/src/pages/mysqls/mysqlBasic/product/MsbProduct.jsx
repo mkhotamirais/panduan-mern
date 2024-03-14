@@ -1,17 +1,16 @@
-import { useDispatch, useSelector } from "react-redux";
-import { getProductsThunk, selectAllProducts, setSort, setView } from "../../../../app/features/reduxThunk/reduxThunkSlice";
 import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getProducts, setSort, setView } from "../../../../app/features/mysqlBasic/mysqlBasicSlice";
 import { Err, GridCard, Loading, PostBtn } from "../../../../components/Components";
-import ReduxThunkCard from "./ReduxThunkCard";
-import ReduxThunkTable from "./ReduxThunkTable";
+import MsbProductCard from "./MsbProductCard";
+import MsbProductTable from "./MsbProductTable";
 
-const ReduxThunkProduct = () => {
-  const { status, error, view, sort } = useSelector((state) => state.reduxThunk);
-  const products = useSelector(selectAllProducts);
+const MsbProduct = () => {
+  const { data: products, status, error, view, sort } = useSelector((state) => state.mysqlBasic);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getProductsThunk());
+    dispatch(getProducts());
   }, [dispatch]);
 
   let sortedData;
@@ -25,9 +24,9 @@ const ReduxThunkProduct = () => {
   else if (status === "failed") content = <Err>{error}</Err>;
   else if (status === "succeeded") {
     if (products.length > 0) {
-      const renderedProductsCard = products && sortedData.map((item) => <ReduxThunkCard key={item.id} item={item} />);
+      const renderedProductsCard = products && sortedData?.map((item) => <MsbProductCard key={item.id} item={item} />);
       const renderedProductsTable =
-        products && sortedData.map((item, i) => <ReduxThunkTable key={item.id} item={item} i={i} />);
+        products && sortedData?.map((item, i) => <MsbProductTable key={item.id} item={item} i={i} />);
       if (view === "card") {
         content = <GridCard>{renderedProductsCard}</GridCard>;
       } else if (view === "table") {
@@ -38,7 +37,6 @@ const ReduxThunkProduct = () => {
                 <th>No</th>
                 <th>Name</th>
                 <th className="hidden sm:table-cell">Price</th>
-                <th className="hidden md:table-cell">Description</th>
                 <th className="hidden lg:table-cell">CreatedAt</th>
                 <th className="hidden xl:table-cell">UpdatedAt</th>
                 <th>Action</th>
@@ -61,7 +59,7 @@ const ReduxThunkProduct = () => {
             value={view}
             onChange={(e) => {
               dispatch(setView(e.target.value));
-              localStorage.setItem("reduxThunkView", JSON.stringify(e.target.value));
+              localStorage.setItem("mysqlBasicView", JSON.stringify(e.target.value));
             }}
             className="border border-blue-400 p-1 rounded"
           >
@@ -91,4 +89,4 @@ const ReduxThunkProduct = () => {
   );
 };
 
-export default ReduxThunkProduct;
+export default MsbProduct;

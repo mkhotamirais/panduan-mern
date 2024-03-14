@@ -43,6 +43,7 @@ const initialState = {
   status: "idle",
   error: null,
   sort: "createdAt",
+  view: JSON.parse(localStorage.getItem("fccBookView")) || "table",
 };
 
 const v1FccBookSlice = createSlice({
@@ -51,6 +52,9 @@ const v1FccBookSlice = createSlice({
   reducers: {
     setSort(state, action) {
       state.sort = action.payload;
+    },
+    setView(state, action) {
+      state.view = action.payload;
     },
   },
   extraReducers(builder) {
@@ -99,6 +103,6 @@ const v1FccBookSlice = createSlice({
   },
 });
 
-export const { setSort } = v1FccBookSlice.actions;
+export const { setSort, setView } = v1FccBookSlice.actions;
 
 export default v1FccBookSlice.reducer;

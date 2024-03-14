@@ -8,18 +8,21 @@ html {
 
 #fccBook table,
 #reduxThunk table,
+#mysqlBasic table,
 #reduxRtk table {
   @apply w-full border-separate;
 }
 
 #fccBook table th,
 #reduxThunk table th,
+#mysqlBasic table th,
 #reduxRtk table th {
   @apply font-medium py-1 border rounded;
 }
 
 #fccBook table td,
 #reduxThunk table td,
+#mysqlBasic table td,
 #reduxRtk table td {
   @apply border rounded text-center;
 }

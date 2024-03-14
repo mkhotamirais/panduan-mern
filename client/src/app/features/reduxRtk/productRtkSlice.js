@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const productRtkSlice = createSlice({
   name: "productRtk",
   initialState: {
-    view: "table",
+    view: JSON.parse(localStorage.getItem("reduxThunkView")) || "table",
     sort: "createdAt",
   },
   reducers: {
