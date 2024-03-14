@@ -39,6 +39,16 @@ import MsaProduct from "./pages/mysqls/mysqlAuth/product/MsaProduct.jsx";
 import MsbProductPost from "./pages/mysqls/mysqlBasic/product/MsbProductPost.jsx";
 import MsbProductUpdate from "./pages/mysqls/mysqlBasic/product/MsbProductUpdate.jsx";
 import MsbProductDetail from "./pages/mysqls/mysqlBasic/product/MsbProductDetail.jsx";
+import MysqlRelational from "./pages/mysqls/mysqlRelational/MysqlRelational.jsx";
+import MsrHome from "./pages/mysqls/mysqlRelational/MsrHome.jsx";
+import MsrProduct from "./pages/mysqls/mysqlRelational/product/MsrProduct.jsx";
+import MsrUser from "./pages/mysqls/mysqlRelational/user/MsrUser.jsx";
+import MsrProductPost from "./pages/mysqls/mysqlRelational/product/MsrProductPost.jsx";
+import MsrUserPost from "./pages/mysqls/mysqlRelational/user/MsrUserPost.jsx";
+import MsrUserDetail from "./pages/mysqls/mysqlRelational/user/MsrUserDetail.jsx";
+import MsrUserUpdate from "./pages/mysqls/mysqlRelational/user/MsrUserUpdate.jsx";
+import MsrProductDetail from "./pages/mysqls/mysqlRelational/product/MsrProductDetail.jsx";
+import MsrProductUpdate from "./pages/mysqls/mysqlRelational/product/MsrProductUpdate.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -92,6 +102,21 @@ const router = createBrowserRouter(
             <Route index element={<MySAuthHome />} />
             <Route path="product">
               <Route index element={<MsaProduct />} />
+            </Route>
+          </Route>
+          <Route path="mysql-relational" element={<MysqlRelational />}>
+            <Route index element={<MsrHome />} />
+            <Route path="product">
+              <Route index element={<MsrProduct />} />
+              <Route path="update/:id" element={<MsrProductUpdate />} />
+              <Route path="detail/:id" element={<MsrProductDetail />} />
+              <Route path="post" element={<MsrProductPost />} />
+            </Route>
+            <Route path="user">
+              <Route index element={<MsrUser />} />
+              <Route path="post" element={<MsrUserPost />} />
+              <Route path="update/:id" element={<MsrUserUpdate />} />
+              <Route path="detail/:id" element={<MsrUserDetail />} />
             </Route>
           </Route>
         </Route>

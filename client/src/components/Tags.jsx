@@ -86,3 +86,16 @@ export const BtnLink = ({ children = "BtnLink", to, onClick, className }) => (
   </Link>
 );
 BtnLink.propTypes;
+
+export const Select = ({ children = "Select", className, id, value, onChange }) => (
+  <select
+    name={id}
+    id={id}
+    value={value}
+    onChange={onChange}
+    className={`${className} border border-slate-300 focus:outline-blue-300  rounded p-2 block mb-2 w-full`}
+  >
+    {children}
+  </select>
+);
+Select.propTypes;

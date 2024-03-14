@@ -9,6 +9,7 @@ html {
 #fccBook table,
 #reduxThunk table,
 #mysqlBasic table,
+#msr table,
 #reduxRtk table {
   @apply w-full border-separate;
 }
@@ -16,6 +17,7 @@ html {
 #fccBook table th,
 #reduxThunk table th,
 #mysqlBasic table th,
+#msr table th,
 #reduxRtk table th {
   @apply font-medium py-1 border rounded;
 }
@@ -23,6 +25,7 @@ html {
 #fccBook table td,
 #reduxThunk table td,
 #mysqlBasic table td,
+#msr table td,
 #reduxRtk table td {
   @apply border rounded text-center;
 }
