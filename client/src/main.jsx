@@ -52,6 +52,28 @@ import MsfUser from "./pages/mysqls/mysqlFiles/product/MsfUser";
 import MsfUserPost from "./pages/mysqls/mysqlFiles/product/MsfUserPost.jsx";
 import MsfUserDetail from "./pages/mysqls/mysqlFiles/product/MsfUserDetail.jsx";
 import MsfUserUpdate from "./pages/mysqls/mysqlFiles/product/MsfUserUpdate.jsx";
+import MongodbBasic from "./pages/mongodbs/mongodbBasic/MongodbBasic.jsx";
+import MdBasicHome from "./pages/mongodbs/mongodbBasic/MdBasicHome.jsx";
+import MongodbFiles from "./pages/mongodbs/mongodbFiles/MongodbFiles.jsx";
+import MongodbAuth from "./pages/mongodbs/mongodbAuth/MongodbAuth.jsx";
+import MongodbRelational from "./pages/mongodbs/mongodbRelational/MongodbRelational.jsx";
+import MdAuthHome from "./pages/mongodbs/mongodbAuth/MdAuthHome.jsx";
+import MdRelHome from "./pages/mongodbs/mongodbRelational/MdRelHome.jsx";
+import MdFilesHome from "./pages/mongodbs/mongodbFiles/MdFilesHome.jsx";
+import MdBasicProduct from "./pages/mongodbs/mongodbBasic/product/MdBasicProduct.jsx";
+import MdFilesProduct from "./pages/mongodbs/mongodbFiles/product/MdFilesProduct.jsx";
+import MdRelProduct from "./pages/mongodbs/mongodbRelational/product/MdRelProduct.jsx";
+import MdAuthProduct from "./pages/mongodbs/mongodbAuth/product/MdAuthProduct.jsx";
+import MsaUser from "./pages/mysqls/mysqlAuth/user/MsaUser.jsx";
+import MsaUserDetail from "./pages/mysqls/mysqlAuth/user/MsaUserDetail.jsx";
+import MsaUserPost from "./pages/mysqls/mysqlAuth/user/MsaUserPost.jsx";
+import MsaProductDetail from "./pages/mysqls/mysqlAuth/product/MsaProductDetail.jsx";
+import MsaProductPost from "./pages/mysqls/mysqlAuth/product/MsaProductPost.jsx";
+import MsaSignin from "./pages/mysqls/mysqlAuth/auth/MsaSignin.jsx";
+import MsaSignup from "./pages/mysqls/mysqlAuth/auth/MsaSignup.jsx";
+import axios from "axios";
+
+axios.defaults.withCredentials = true;
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -108,7 +130,16 @@ const router = createBrowserRouter(
             <Route index element={<MySAuthHome />} />
             <Route path="product">
               <Route index element={<MsaProduct />} />
+              <Route path="detail/:id" element={<MsaProductDetail />} />
+              <Route path="post" element={<MsaProductPost />} />
             </Route>
+            <Route path="user">
+              <Route index element={<MsaUser />} />
+              <Route path="detail/:id" element={<MsaUserDetail />} />
+              <Route path="post" element={<MsaUserPost />} />
+            </Route>
+            <Route path="signin" element={<MsaSignin />} />
+            <Route path="signup" element={<MsaSignup />} />
           </Route>
           <Route path="mysql-relational" element={<MysqlRelational />}>
             <Route index element={<MsrHome />} />
@@ -124,6 +155,22 @@ const router = createBrowserRouter(
               <Route path="update/:id" element={<MsrUserUpdate />} />
               <Route path="detail/:id" element={<MsrUserDetail />} />
             </Route>
+          </Route>
+          <Route path="mongodb-basic" element={<MongodbBasic />}>
+            <Route index element={<MdBasicHome />} />
+            <Route path="product" element={<MdBasicProduct />} />
+          </Route>
+          <Route path="mongodb-files" element={<MongodbFiles />}>
+            <Route index element={<MdFilesHome />} />
+            <Route path="product" element={<MdFilesProduct />} />
+          </Route>
+          <Route path="mongodb-relational" element={<MongodbRelational />}>
+            <Route index element={<MdRelHome />} />
+            <Route path="product" element={<MdRelProduct />} />
+          </Route>
+          <Route path="mongodb-auth" element={<MongodbAuth />}>
+            <Route index element={<MdAuthHome />} />
+            <Route path="product" element={<MdAuthProduct />} />
           </Route>
         </Route>
       </Route>

@@ -66,7 +66,7 @@ const msrUserSlice = createSlice({
       })
       .addCase(getUsers.rejected, (state, action) => {
         state.status = "failed";
-        state.data = action.payload;
+        state.error = action.payload;
       })
       .addCase(deleteUser.pending, (state) => {
         state.status = "loading";
@@ -76,7 +76,7 @@ const msrUserSlice = createSlice({
       })
       .addCase(deleteUser.rejected, (state, action) => {
         state.status = "failed";
-        state.data = action.payload;
+        state.error = action.payload;
       })
       .addCase(postUser.pending, (state) => {
         state.status = "loading";
@@ -86,7 +86,7 @@ const msrUserSlice = createSlice({
       })
       .addCase(postUser.rejected, (state, action) => {
         state.status = "failed";
-        state.data = action.payload;
+        state.error = action.payload;
       })
       .addCase(updateUser.pending, (state) => {
         state.status = "loading";
@@ -96,7 +96,7 @@ const msrUserSlice = createSlice({
       })
       .addCase(updateUser.rejected, (state, action) => {
         state.status = "failed";
-        state.data = action.payload;
+        state.error = action.payload;
       });
   },
 });

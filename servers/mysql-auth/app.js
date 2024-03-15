@@ -6,11 +6,17 @@ const path = require("path");
 const conn = require("./config");
 const cookieParser = require("cookie-parser");
 const { credentials, corsOptions } = require("./config/cred");
+const { logSuccess, logError } = require("./middleware/logger");
+const User = require("./app/user/model");
+const Product = require("./app/product/model");
 
 // (async () => {
-//   await conn.sync();
-//   await UserToken.sync();
+//   // await conn.sync();
+//   // await User.sync();
+//   // await Product.sync();
 // })();
+
+app.use(logSuccess);
 
 app.use(credentials);
 app.use(cors(corsOptions));
@@ -24,13 +30,18 @@ app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "views", "index.html"));
 });
 
-app.use("/authToken", require("./app/authToken/auth/router"));
-app.use("/usersToken", require("./app/authToken/user/router"));
+app.use("/mysql-auth/auth", require("./app/auth/router"));
+app.use("/mysql-auth/user", require("./app/user/router"));
+app.use("/mysql-auth/product", require("./app/product/router"));
 
-app.use("*", (req, res) => {
-  res.status(404).json({ message: "alamat url tidak ada atau salah" });
+app.all("/*", (req, res) => {
+  res.status(404);
+  if (req.accepts("html")) res.sendFile(path.join(__dirname, "views", "404.html"));
+  else if (req.accepts("json")) res.json({ message: "404 Not Found" });
+  else res.type("txt").send("404 Not Found");
 });
 
+app.use(logError);
 app.use((err, req, res, next) => {
   res.status(500).json({ message: "something broke" });
 });

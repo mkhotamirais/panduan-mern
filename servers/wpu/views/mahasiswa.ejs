@@ -1,0 +1,24 @@
+<%- include('layouts/header') %> <%- include('layouts/nav') %>
+
+<div class="container">
+  <h1><%= title %></h1>
+
+  <h2>Daftar Mahasiswa</h2>
+  <% mahasiswa.forEach(mhs => { %>
+  <ul>
+    <li>Nama: <%= mhs.nama %></li>
+    <li>umur: <%= mhs.umur %></li>
+  </ul>
+  <% }) %>
+
+  <h2>Daftar Dosen</h2>
+  <% if (dosen.length < 1) { %>
+  <p>Data dosen masih kosong</p>
+  <% } %> <% dosen.forEach(d => { %>
+  <ul>
+    <li>Nama: <%= d.nama %></li>
+    <li>umur: <%= d.umur %></li>
+  </ul>
+</div>
+
+<% }) %> <%- include('layouts/footer') %>

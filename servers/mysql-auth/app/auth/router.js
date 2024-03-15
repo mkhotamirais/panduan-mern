@@ -1,10 +1,10 @@
-const { Login, Register, RefreshToken, Logout } = require("./controllers");
+const { signin, signup, refresh, signout } = require("./controllers");
 
 const router = require("express").Router();
 
-router.post("/login", Login);
-router.post("/register", Register);
-router.get("/refreshtoken", RefreshToken);
-router.delete("/logout", Logout);
+router.post("/signin", signin);
+router.post("/signup", signup);
+router.get("/refresh", refresh);
+router.delete("/signout", signout);
 
 module.exports = router;

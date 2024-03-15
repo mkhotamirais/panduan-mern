@@ -9,6 +9,9 @@ import mysqlBasicReducer from "./features/mysqlBasic/mysqlBasicSlice";
 import msrProductReducer from "./features/mysqlRelational/msrProductSlice";
 import msrUserReducer from "./features/mysqlRelational/msrUserSlice";
 import msfUserReducer from "./features/mysqlFiles/msfUserSlice";
+import msaUserReducer from "./features/mysqlAuth/msaUserSlice";
+import msaProductReducer from "./features/mysqlAuth/msaProductSlice";
+import msaAuthReducer from "./features/mysqlAuth/msaAuthSlice";
 
 export const store = configureStore({
   reducer: {
@@ -20,6 +23,9 @@ export const store = configureStore({
     msrProduct: msrProductReducer,
     msrUser: msrUserReducer,
     msfUser: msfUserReducer,
+    msaUser: msaUserReducer,
+    msaProduct: msaProductReducer,
+    msaAuth: msaAuthReducer,
     [apiSlice.reducerPath]: apiSlice.reducer,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(apiSlice.middleware),

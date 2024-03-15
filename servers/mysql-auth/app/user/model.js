@@ -1,10 +1,10 @@
 const { DataTypes } = require("sequelize");
-const conn = require("../../../config");
+const conn = require("../../config");
 
 const User = conn.define(
   "User",
   {
-    name: { type: DataTypes.STRING, allowNull: false, unique: true, validate: { notEmpty: true } },
+    username: { type: DataTypes.STRING, allowNull: false, unique: true, validate: { notEmpty: true } },
     email: { type: DataTypes.STRING, allowNull: false, unique: true, validate: { notEmpty: true } },
     password: { type: DataTypes.STRING, allowNull: false, validate: { notEmpty: true } },
     refresh_token: DataTypes.STRING,

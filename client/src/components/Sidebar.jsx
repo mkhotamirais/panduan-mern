@@ -9,6 +9,7 @@ const basicList = ["freecodecamp", "redux thunk", "redux rtk"];
 const filesList = ["enam", "tujuh", "delapan"];
 const authList = ["sembilan", "sepuhl"];
 const mysqlList = ["mysql basic", "mysql files", "mysql auth", "mysql relational"];
+const mongodbList = ["mongodb basic", "mongodb files", "mongodb auth", "mongodb relational"];
 
 export const SidebarContentList = ({ title, data }) => {
   const location = useLocation();
@@ -20,7 +21,7 @@ export const SidebarContentList = ({ title, data }) => {
     setActive(pathArr[1]);
   }, [pathArr]);
   return (
-    <div className="flex flex-col items-start mt-5">
+    <div className="flex flex-col items-start mt-3">
       <h3 className="font-medium mb-1">{title}</h3>
       {data.map((sl, i) => (
         <Link
@@ -30,7 +31,7 @@ export const SidebarContentList = ({ title, data }) => {
           }}
           key={sl}
           to={sl.split(" ").join("-")}
-          className={`${active === sl ? "text-blue-600" : ""} py-1 text-sm hover:text-blue-500`}
+          className={`${active === sl?.split(" ").join("-") ? "text-blue-600" : ""} pb-1 text-sm hover:text-blue-500`}
         >
           {sl}
         </Link>
@@ -48,6 +49,7 @@ export const SidebarContent = () => {
       <SidebarContentList title="Files" data={filesList} />
       <SidebarContentList title="Auth" data={authList} />
       <SidebarContentList title="Mysql" data={mysqlList} />
+      <SidebarContentList title="Mongodb" data={mongodbList} />
     </section>
   );
 };
@@ -66,7 +68,7 @@ export const SidebarCollapse = ({ children }) => {
         onClick={(e) => e.stopPropagation()}
         className={`${
           openSidebar ? "translate-x-0" : "-translate-x-full"
-        } w-60 h-full bg-white border-r rounded-r-md transition-all duration-300`}
+        } w-60 h-full bg-white border-r rounded-r-md transition-all duration-300 overflow-y-scroll`}
       >
         <div className="flex justify-between items-center p-3">
           <button onClick={() => dispatch(setOpenSidebar())} className="">

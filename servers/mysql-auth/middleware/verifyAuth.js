@@ -1,6 +1,6 @@
 const jwt = require("jsonwebtoken");
 const { ats } = require("../config/constants");
-const UserToken = require("./authToken/user/model");
+// const User = require("../app/auth/user/model");
 
 const verifyToken = (req, res, next) => {
   const authHeader = req.headers.authorization || req.headers.Authorization || req.headers["authorization"];
@@ -9,7 +9,7 @@ const verifyToken = (req, res, next) => {
   jwt.verify(token, ats, (err, decoded) => {
     if (err) return res.sendStatus(403);
     req.id = decoded.id;
-    req.name = decoded.name;
+    req.email = decoded.email;
     req.role = decoded.role;
     next();
   });

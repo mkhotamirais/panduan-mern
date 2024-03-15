@@ -65,7 +65,7 @@ const mysqlBasicSlice = createSlice({
         state.data = action.payload;
       })
       .addCase(getProducts.rejected, (state, action) => {
-        state.status = "loading";
+        state.status = "failed";
         state.error = action.payload;
       })
       .addCase(postProduct.pending, (state) => {
@@ -75,7 +75,7 @@ const mysqlBasicSlice = createSlice({
         state.status = "succeeded";
       })
       .addCase(postProduct.rejected, (state, action) => {
-        state.status = "loading";
+        state.status = "failed";
         state.error = action.payload;
       })
       .addCase(updateProduct.pending, (state) => {
@@ -85,7 +85,7 @@ const mysqlBasicSlice = createSlice({
         state.status = "succeeded";
       })
       .addCase(updateProduct.rejected, (state, action) => {
-        state.status = "loading";
+        state.status = "failed";
         state.error = action.payload;
       })
       .addCase(deleteProduct.pending, (state) => {
@@ -95,7 +95,7 @@ const mysqlBasicSlice = createSlice({
         state.status = "succeeded";
       })
       .addCase(deleteProduct.rejected, (state, action) => {
-        state.status = "loading";
+        state.status = "failed";
         state.error = action.payload;
       });
   },

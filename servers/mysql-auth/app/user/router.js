@@ -1,11 +1,12 @@
-const { verifyToken, adminOnly, matchUser } = require("../../mw");
-const { GetUsersToken, GetUserTokenById, DeleteUserToken, UpdateUserToken } = require("./controllers");
+const { verifyToken } = require("../../middleware/verifyAuth");
+const { getUser, getUsers, updateUser, deleteUser, postUser } = require("./controllers");
 
 const router = require("express").Router();
 
-router.get("/", verifyToken, adminOnly, GetUsersToken);
-router.get("/:id", verifyToken, matchUser, GetUserTokenById);
-router.patch("/:id", verifyToken, matchUser, UpdateUserToken);
-router.delete("/:id", verifyToken, matchUser, DeleteUserToken);
+router.get("/", verifyToken, getUsers);
+router.get("/:id", getUser);
+router.post("/", postUser);
+router.patch("/:id", updateUser);
+router.delete("/:id", deleteUser);
 
 module.exports = router;

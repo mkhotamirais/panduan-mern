@@ -66,7 +66,7 @@ const msrProductSlice = createSlice({
       })
       .addCase(getProducts.rejected, (state, action) => {
         state.status = "failed";
-        state.data = action.payload;
+        state.error = action.payload;
       })
       .addCase(deleteProduct.pending, (state) => {
         state.status = "loading";
@@ -76,7 +76,7 @@ const msrProductSlice = createSlice({
       })
       .addCase(deleteProduct.rejected, (state, action) => {
         state.status = "failed";
-        state.data = action.payload;
+        state.error = action.payload;
       })
       .addCase(postProduct.pending, (state) => {
         state.status = "loading";
@@ -86,7 +86,7 @@ const msrProductSlice = createSlice({
       })
       .addCase(postProduct.rejected, (state, action) => {
         state.status = "failed";
-        state.data = action.payload;
+        state.error = action.payload;
       })
       .addCase(updateProduct.pending, (state) => {
         state.status = "loading";
@@ -96,7 +96,7 @@ const msrProductSlice = createSlice({
       })
       .addCase(updateProduct.rejected, (state, action) => {
         state.status = "failed";
-        state.data = action.payload;
+        state.error = action.payload;
       });
   },
 });

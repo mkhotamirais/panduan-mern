@@ -1,0 +1,38 @@
+<h1><%= title %></h1>
+<div class="row">
+  <div class="col-md-8">
+    <h2>Daftar Contact</h2>
+    <a href="ejs-layout-contact/add" class="btn btn-primary my-2">Add contact</a>
+    <% if (msg.length !== 0) { %>
+    <div class="alert alert-success" role="alert"><%= msg %></div>
+    <% } %>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">nama</th>
+          <th scope="col">email</th>
+          <th scope="col">noHp</th>
+          <th scope="col">aksi</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if (contacts.length === 0) { %>
+        <p class="alert alert-danger" role="alert">Data kontak tidak ditemukan</p>
+        <% } else { %> <% contacts.forEach((contact,i) => { %>
+        <tr>
+          <th scope="row"><%= i+1 %></th>
+          <td><%= contact.nama %></td>
+          <td><%= contact.email %></td>
+          <td><%= contact.noHp %></td>
+          <td>
+            <a href="/ejs-layout-contact/detail/<%= contact.id %>" class="btn btn-success badge rounded-pill">
+              <i class="bi bi-info-circle"></i> detail
+            </a>
+          </td>
+        </tr>
+        <% }) %> <% } %>
+      </tbody>
+    </table>
+  </div>
+</div>
