@@ -74,6 +74,10 @@ import MdV2CategoryPost from "./pages/fundamentals/mongodb/v2/MdV2CategoryPost.j
 import MdV2CategoryUpdate from "./pages/fundamentals/mongodb/v2/MdV2CategoryUpdate.jsx";
 import MdV2ProductPost from "./pages/fundamentals/mongodb/v2/MdV2ProductPost.jsx";
 import MdV2ProductUpdate from "./pages/fundamentals/mongodb/v2/MdV2ProductUpdate.jsx";
+import MdV3Product from "./pages/fundamentals/mongodb/v3/MdV3Product.jsx";
+import MdV3ProductDetail from "./pages/fundamentals/mongodb/v3/MdV3ProductDetail.jsx";
+import MdV3ProductPost from "./pages/fundamentals/mongodb/v3/MdV3ProductPost.jsx";
+import MdV3ProductUpdate from "./pages/fundamentals/mongodb/v3/MdV3ProductUpdate.jsx";
 
 axios.defaults.withCredentials = true;
 
@@ -129,6 +133,12 @@ const router = createBrowserRouter(
               <Route path="post" element={<MdV2CategoryPost />} />
               <Route path="detail/:id" element={<MdV2CategoryDetail />} />
               <Route path="update/:id" element={<MdV2CategoryUpdate />} />
+            </Route>
+            <Route path="md-v3-product">
+              <Route index element={<MdV3Product />} />
+              <Route path="post" element={<MdV3ProductPost />} />
+              <Route path="detail/:id" element={<MdV3ProductDetail />} />
+              <Route path="update/:id" element={<MdV3ProductUpdate />} />
             </Route>
           </Route>
           <Route path="mysql-basic" element={<MysqlBasic />}>
