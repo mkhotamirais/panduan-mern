@@ -64,6 +64,17 @@ export const InputRef = forwardRef(
 InputRef.propTypes;
 InputRef.displayName;
 
+export const Textarea = ({ className, id, value, onChange }) => (
+  <textarea
+    name={id}
+    id={id}
+    value={value}
+    onChange={onChange}
+    className={`${className} mb-2 border border-slate-300 focus:outline-blue-300 rounded p-2 w-full`}
+  />
+);
+Textarea.propTypes;
+
 export const Button = ({ children = "Button", type = "button", disabled, onClick, className }) => (
   <button
     type={type}

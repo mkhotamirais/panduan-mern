@@ -1,13 +1,13 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getProducts, setSort, setView } from "../../../../app/features/mysqlAuth/msaProductSlice";
+import { getProducts, setSort, setView } from "../../../../app/features/mongodb/mdV2ProductSlice";
 import { Err, GridCard, Loading, PostBtn } from "../../../../components/Components";
-import MsaProductCard from "./MsaProductCard";
-import MsaProductTable from "./MsaProductTable";
+import MdV2ProductCard from "./MdV2ProductCard";
+import MdV2ProductTable from "./MdV2ProductTable";
 
-const MsaProduct = () => {
+const MdV2Product = () => {
   const dispatch = useDispatch();
-  const { data: products, status, error, sort, view } = useSelector((state) => state.msaProduct);
+  const { data: products, status, error, sort, view } = useSelector((state) => state.mdV2Product);
 
   useEffect(() => {
     dispatch(getProducts());
@@ -24,9 +24,9 @@ const MsaProduct = () => {
   else if (status === "failed") content = <Err>{error}</Err>;
   else if (status === "succeeded") {
     if (products.length > 0) {
-      const renderedProductsCard = products && sortedData?.map((item) => <MsaProductCard key={item.id} item={item} />);
+      const renderedProductsCard = products && sortedData?.map((item) => <MdV2ProductCard key={item?._id} item={item} />);
       const renderedProductsTable =
-        products && sortedData?.map((item, i) => <MsaProductTable key={item.id} item={item} i={i} />);
+        products && sortedData?.map((item, i) => <MdV2ProductTable key={item?._id} item={item} i={i} />);
       if (view === "card") {
         content = <GridCard>{renderedProductsCard}</GridCard>;
       } else if (view === "table") {
@@ -37,6 +37,8 @@ const MsaProduct = () => {
                 <th>No</th>
                 <th>Name</th>
                 <th className="hidden sm:table-cell">Price</th>
+                <th className="hidden md:table-cell">Category</th>
+                <th className="hidden md:table-cell">Description</th>
                 <th className="hidden lg:table-cell">CreatedAt</th>
                 <th className="hidden xl:table-cell">UpdatedAt</th>
                 <th>Action</th>
@@ -60,7 +62,7 @@ const MsaProduct = () => {
             value={view}
             onChange={(e) => {
               dispatch(setView(e.target.value));
-              localStorage.setItem("MdV1ProductView", JSON.stringify(e.target.value));
+              localStorage.setItem("mdV2ProductView", JSON.stringify(e.target.value));
             }}
             className="border border-blue-400 p-1 rounded"
           >
@@ -90,4 +92,4 @@ const MsaProduct = () => {
   );
 };
 
-export default MsaProduct;
+export default MdV2Product;

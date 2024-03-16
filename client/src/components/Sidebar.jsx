@@ -8,8 +8,7 @@ import { useEffect, useState } from "react";
 const basicList = ["freecodecamp", "redux thunk", "redux rtk"];
 const filesList = ["enam", "tujuh", "delapan"];
 const authList = ["sembilan", "sepuhl"];
-const mysqlList = ["mysql basic", "mysql files", "mysql auth", "mysql relational"];
-const mongodbList = ["mongodb basic", "mongodb files", "mongodb auth", "mongodb relational"];
+const fundamentalList = ["mongodb", "mysql basic", "mysql files", "mysql auth", "mysql relational"];
 
 export const SidebarContentList = ({ title, data }) => {
   const location = useLocation();
@@ -48,8 +47,7 @@ export const SidebarContent = () => {
       <SidebarContentList title="Basic" data={basicList} />
       <SidebarContentList title="Files" data={filesList} />
       <SidebarContentList title="Auth" data={authList} />
-      <SidebarContentList title="Mysql" data={mysqlList} />
-      <SidebarContentList title="Mongodb" data={mongodbList} />
+      <SidebarContentList title="Fundamental" data={fundamentalList} />
     </section>
   );
 };

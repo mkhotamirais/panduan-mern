@@ -12,6 +12,9 @@ import msfUserReducer from "./features/mysqlFiles/msfUserSlice";
 import msaUserReducer from "./features/mysqlAuth/msaUserSlice";
 import msaProductReducer from "./features/mysqlAuth/msaProductSlice";
 import msaAuthReducer from "./features/mysqlAuth/msaAuthSlice";
+import mdV1ProductReducer from "./features/mongodb/mdV1ProductSlice";
+import mdV2ProductReducer from "./features/mongodb/mdV2ProductSlice";
+import mdV2CategoryReducer from "./features/mongodb/mdV2CategorySlice";
 
 export const store = configureStore({
   reducer: {
@@ -26,6 +29,9 @@ export const store = configureStore({
     msaUser: msaUserReducer,
     msaProduct: msaProductReducer,
     msaAuth: msaAuthReducer,
+    mdV1Product: mdV1ProductReducer,
+    mdV2Product: mdV2ProductReducer,
+    mdV2Category: mdV2CategoryReducer,
     [apiSlice.reducerPath]: apiSlice.reducer,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(apiSlice.middleware),

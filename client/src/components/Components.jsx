@@ -71,7 +71,7 @@ export const Breadcrumb = ({ className }) => {
         .splice(2, path.indexOf(p) - 1)
         .join("/");
     return (
-      <Link to={to} key={p} className="hover:underline hover:opacity-70">
+      <Link to={to} key={p} className="hover:underline hover:opacity-70 min-w-max">
         {p?.length ? p?.split("-").join(" ") : p}
         {i !== path.length - 1 ? <FaChevronRight className="inline-block text-xs mx-1 sm:mx-2 text-gray-400" /> : null}
       </Link>
@@ -86,7 +86,7 @@ export const Breadcrumb = ({ className }) => {
         <Prev />
         <Next />
       </div>
-      <div className="leading-none">{content}</div>
+      <div className="flex leading-none overflow-x-scroll">{content}</div>
     </div>
   );
 };
@@ -106,18 +106,18 @@ export const Menus = ({ menus }) => {
   const [active, setActive] = useState(null);
   if (pathArr[2] === undefined) pathArr[2] = "home";
   useEffect(() => {
-    setActive(pathArr[2]);
+    setActive(pathArr[2].split("-").join(" "));
   }, [pathArr]);
   return (
-    <div className="flex gap-2 py-1 mb-2 text-gray-700">
+    <div className="text-sm flex gap-1 py-1 mb-2 text-gray-700 overflow-x-scroll">
       {menus.map((m) => (
         <Link
           onClick={() => setActive(m)}
           key={m}
-          to={m === "home" ? "" : m}
+          to={m === "home" ? "" : m.split(" ").join("-")}
           className={`${
             active === m ? "bg-blue-600 text-white" : "bg-gray-100"
-          } hover:opacity-70 capitalize p-2 rounded leading-none`}
+          } hover:opacity-70 capitalize p-2 rounded leading-none min-w-max`}
         >
           {m}
         </Link>

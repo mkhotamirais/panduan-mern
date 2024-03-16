@@ -7,9 +7,7 @@ import { Provider } from "react-redux";
 import { store } from "./app/store.js";
 import { SnackbarProvider } from "notistack";
 import ErrorBoundary from "./ErrorBoundary.jsx";
-import Home from "./pages/Home.jsx";
 import Freecodecamp from "./pages/merns/freecodecamp/Freecodecamp.jsx";
-import HomePage from "./pages/merns/HomePage.jsx";
 import FccBook from "./pages/merns/freecodecamp/book/FccBook.jsx";
 import FccHome from "./pages/merns/freecodecamp/FccHome.jsx";
 import FccBookDetail from "./pages/merns/freecodecamp/book/FccBookDetail.jsx";
@@ -52,18 +50,6 @@ import MsfUser from "./pages/mysqls/mysqlFiles/product/MsfUser";
 import MsfUserPost from "./pages/mysqls/mysqlFiles/product/MsfUserPost.jsx";
 import MsfUserDetail from "./pages/mysqls/mysqlFiles/product/MsfUserDetail.jsx";
 import MsfUserUpdate from "./pages/mysqls/mysqlFiles/product/MsfUserUpdate.jsx";
-import MongodbBasic from "./pages/mongodbs/mongodbBasic/MongodbBasic.jsx";
-import MdBasicHome from "./pages/mongodbs/mongodbBasic/MdBasicHome.jsx";
-import MongodbFiles from "./pages/mongodbs/mongodbFiles/MongodbFiles.jsx";
-import MongodbAuth from "./pages/mongodbs/mongodbAuth/MongodbAuth.jsx";
-import MongodbRelational from "./pages/mongodbs/mongodbRelational/MongodbRelational.jsx";
-import MdAuthHome from "./pages/mongodbs/mongodbAuth/MdAuthHome.jsx";
-import MdRelHome from "./pages/mongodbs/mongodbRelational/MdRelHome.jsx";
-import MdFilesHome from "./pages/mongodbs/mongodbFiles/MdFilesHome.jsx";
-import MdBasicProduct from "./pages/mongodbs/mongodbBasic/product/MdBasicProduct.jsx";
-import MdFilesProduct from "./pages/mongodbs/mongodbFiles/product/MdFilesProduct.jsx";
-import MdRelProduct from "./pages/mongodbs/mongodbRelational/product/MdRelProduct.jsx";
-import MdAuthProduct from "./pages/mongodbs/mongodbAuth/product/MdAuthProduct.jsx";
 import MsaUser from "./pages/mysqls/mysqlAuth/user/MsaUser.jsx";
 import MsaUserDetail from "./pages/mysqls/mysqlAuth/user/MsaUserDetail.jsx";
 import MsaUserPost from "./pages/mysqls/mysqlAuth/user/MsaUserPost.jsx";
@@ -72,6 +58,22 @@ import MsaProductPost from "./pages/mysqls/mysqlAuth/product/MsaProductPost.jsx"
 import MsaSignin from "./pages/mysqls/mysqlAuth/auth/MsaSignin.jsx";
 import MsaSignup from "./pages/mysqls/mysqlAuth/auth/MsaSignup.jsx";
 import axios from "axios";
+import HomeLayout from "./pages/HomeLayout.jsx";
+import Home from "./pages/Home.jsx";
+import MongodbLayout from "./pages/fundamentals/mongodb/MongodbLayout.jsx";
+import Mongodb from "./pages/fundamentals/mongodb/Mongodb.jsx";
+import MdV1Product from "./pages/fundamentals/mongodb/v1/MdV1Product.jsx";
+import MdV1ProductPost from "./pages/fundamentals/mongodb/v1/MdV1ProductPost.jsx";
+import MdV1ProductDetail from "./pages/fundamentals/mongodb/v1/MdV1ProductDetail.jsx";
+import MdV1ProductUpdate from "./pages/fundamentals/mongodb/v1/MdV1ProductUpdate.jsx";
+import MdV2Product from "./pages/fundamentals/mongodb/v2/MdV2Product.jsx";
+import MdV2ProductDetail from "./pages/fundamentals/mongodb/v2/MdV2ProductDetail.jsx";
+import MdV2Category from "./pages/fundamentals/mongodb/v2/MdV2Category.jsx";
+import MdV2CategoryDetail from "./pages/fundamentals/mongodb/v2/MdV2CategoryDetail.jsx";
+import MdV2CategoryPost from "./pages/fundamentals/mongodb/v2/MdV2CategoryPost.jsx";
+import MdV2CategoryUpdate from "./pages/fundamentals/mongodb/v2/MdV2CategoryUpdate.jsx";
+import MdV2ProductPost from "./pages/fundamentals/mongodb/v2/MdV2ProductPost.jsx";
+import MdV2ProductUpdate from "./pages/fundamentals/mongodb/v2/MdV2ProductUpdate.jsx";
 
 axios.defaults.withCredentials = true;
 
@@ -79,8 +81,8 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <>
       <Route path="/" element={<App />} errorElement={<ErrorBoundary />}>
-        <Route path="/" element={<Home />}>
-          <Route index element={<HomePage />} />
+        <Route path="/" element={<HomeLayout />}>
+          <Route index element={<Home />} />
           <Route path="freecodecamp" element={<Freecodecamp />}>
             <Route index element={<FccHome />} />
             <Route path="book">
@@ -106,6 +108,27 @@ const router = createBrowserRouter(
               <Route path="detail/:id" element={<ReduxRtkProductDetail />} />
               <Route path="update/:id" element={<ReduxRtkProductUpdate />} />
               <Route path="post" element={<ReduxRtkProductPost />} />
+            </Route>
+          </Route>
+          <Route path="mongodb" element={<MongodbLayout />}>
+            <Route index element={<Mongodb />} />
+            <Route path="md-v1-product">
+              <Route index element={<MdV1Product />} />
+              <Route path="post" element={<MdV1ProductPost />} />
+              <Route path="detail/:id" element={<MdV1ProductDetail />} />
+              <Route path="update/:id" element={<MdV1ProductUpdate />} />
+            </Route>
+            <Route path="md-v2-product">
+              <Route index element={<MdV2Product />} />
+              <Route path="post" element={<MdV2ProductPost />} />
+              <Route path="detail/:id" element={<MdV2ProductDetail />} />
+              <Route path="update/:id" element={<MdV2ProductUpdate />} />
+            </Route>
+            <Route path="md-v2-category">
+              <Route index element={<MdV2Category />} />
+              <Route path="post" element={<MdV2CategoryPost />} />
+              <Route path="detail/:id" element={<MdV2CategoryDetail />} />
+              <Route path="update/:id" element={<MdV2CategoryUpdate />} />
             </Route>
           </Route>
           <Route path="mysql-basic" element={<MysqlBasic />}>
@@ -155,22 +178,6 @@ const router = createBrowserRouter(
               <Route path="update/:id" element={<MsrUserUpdate />} />
               <Route path="detail/:id" element={<MsrUserDetail />} />
             </Route>
-          </Route>
-          <Route path="mongodb-basic" element={<MongodbBasic />}>
-            <Route index element={<MdBasicHome />} />
-            <Route path="product" element={<MdBasicProduct />} />
-          </Route>
-          <Route path="mongodb-files" element={<MongodbFiles />}>
-            <Route index element={<MdFilesHome />} />
-            <Route path="product" element={<MdFilesProduct />} />
-          </Route>
-          <Route path="mongodb-relational" element={<MongodbRelational />}>
-            <Route index element={<MdRelHome />} />
-            <Route path="product" element={<MdRelProduct />} />
-          </Route>
-          <Route path="mongodb-auth" element={<MongodbAuth />}>
-            <Route index element={<MdAuthHome />} />
-            <Route path="product" element={<MdAuthProduct />} />
           </Route>
         </Route>
       </Route>

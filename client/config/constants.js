@@ -5,4 +5,9 @@ const mysqlRelational = "http://localhost:5500";
 const msf = "http://localhost:5500/users";
 const msa = "http://localhost:5500/mysql-auth";
 
+const url = {
+  mongodb: "http://localhost:5500/mongodb",
+};
+
+export const { mongodb: md } = url;
 export { fcc, reduxThunk, mysqlBasic, mysqlRelational, msf, msa };

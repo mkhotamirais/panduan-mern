@@ -6,32 +6,18 @@ html {
   @apply scroll-smooth;
 }
 
-#fccBook table,
-#reduxThunk table,
-#mysqlBasic table,
-#msr table,
-#msa table,
-#msf table,
-#reduxRtk table {
+.overflow-x-scroll::-webkit-scrollbar {
+  @apply hidden;
+}
+
+table {
   @apply w-full border-separate;
 }
 
-#fccBook table th,
-#reduxThunk table th,
-#mysqlBasic table th,
-#msr table th,
-#msa table th,
-#msf table th,
-#reduxRtk table th {
+table th {
   @apply font-medium py-1 border rounded;
 }
 
-#fccBook table td,
-#reduxThunk table td,
-#mysqlBasic table td,
-#msr table td,
-#msa table td,
-#msf table td,
-#reduxRtk table td {
+table td {
   @apply border rounded text-center;
 }
