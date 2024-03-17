@@ -99,6 +99,9 @@ import MysV2ProductUpdate from "./pages/fundamentals/mysql/v2/MysV2ProductUpdate
 import MysV2UserPost from "./pages/fundamentals/mysql/v2/MysV2UserPost.jsx";
 import MysV2UserDetail from "./pages/fundamentals/mysql/v2/MysV2UserDetail.jsx";
 import MysV2UserUpdate from "./pages/fundamentals/mysql/v2/MysV2UserUpdate.jsx";
+import MysV3ProductPost from "./pages/fundamentals/mysql/v3/MysV3ProductPost.jsx";
+import MysV3ProductDetail from "./pages/fundamentals/mysql/v3/MysV3ProductDetail.jsx";
+import MysV3ProductUpdate from "./pages/fundamentals/mysql/v3/MysV3ProductUpdate.jsx";
 
 axios.defaults.withCredentials = true;
 
@@ -203,6 +206,9 @@ const router = createBrowserRouter(
             </Route>
             <Route path="mys-v3-product">
               <Route index element={<MysV3Product />} />
+              <Route path="post" element={<MysV3ProductPost />} />
+              <Route path="detail/:id" element={<MysV3ProductDetail />} />
+              <Route path="update/:id" element={<MysV3ProductUpdate />} />
             </Route>
           </Route>
           <Route path="mysql-basic" element={<MysqlBasic />}>

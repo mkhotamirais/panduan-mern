@@ -19,6 +19,7 @@ import mdV3ProductReducer from "./features/mongodb/mdV3ProductSlice";
 import mysV1ProductReducer from "./features/mysql/mysV1ProductSlice";
 import mysV2ProductReducer from "./features/mysql/mysV2ProductSlice";
 import mysV2UserReducer from "./features/mysql/mysV2UserSlice";
+import mysV3ProductReducer from "./features/mysql/mysV3ProductSlice";
 
 export const store = configureStore({
   reducer: {
@@ -40,6 +41,7 @@ export const store = configureStore({
     mysV1Product: mysV1ProductReducer,
     mysV2Product: mysV2ProductReducer,
     mysV2User: mysV2UserReducer,
+    mysV3Product: mysV3ProductReducer,
     [apiSlice.reducerPath]: apiSlice.reducer,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(apiSlice.middleware),

@@ -2,7 +2,7 @@ import { Outlet } from "react-router-dom";
 import { Breadcrumb, Menus } from "../../../components/Components";
 import { H1 } from "../../../components/Tags";
 
-const menus = ["home", "mys v1 product", "mys v2 product", "mys v2 user"];
+const menus = ["home", "mys v1 product", "mys v2 product", "mys v2 user", "mys v3 product"];
 
 const MysqlLayout = () => {
   return (

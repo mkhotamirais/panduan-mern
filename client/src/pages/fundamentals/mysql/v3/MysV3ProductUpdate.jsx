@@ -1,44 +1,26 @@
+import { useSnackbar } from "notistack";
 import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import { getProducts, setSort, updateProduct } from "../../../../app/features/mongodb/mdV3ProductSlice";
+import { getProducts, setSort, updateProduct } from "../../../../app/features/mysql/mysV3ProductSlice";
 import { Button, Input, InputRef, Label } from "../../../../components/Tags";
-import { FaTrash } from "react-icons/fa";
 import { PiSpinner } from "react-icons/pi";
-import { useSnackbar } from "notistack";
+import { FaTrash } from "react-icons/fa";
 
-const MdV3ProductUpdate = () => {
+const MysV3ProductUpdate = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { id } = useParams();
-  const item = useSelector((state) => state.mdV3Product.data.find((s) => s._id.toString() === id));
+  const item = useSelector((state) => state.mysV3Product.data.find((s) => s.id.toString() === id));
 
-  const { status } = useSelector((state) => state.mdV3Product);
-
+  const { status } = useSelector((state) => state.mysV3Product);
   const [name, setName] = useState("");
-  const [price, setPrice] = useState("");
   const [image, setImage] = useState("");
   const [preview, setPreview] = useState("");
-  const { enqueueSnackbar } = useSnackbar();
-
-  useEffect(() => {
-    if (item) {
-      setName(item?.name);
-      setPrice(item?.price);
-      setImage(item?.imageName);
-      setPreview(item?.imageUrl);
-    }
-  }, [item]);
 
   useEffect(() => {
     dispatch(getProducts());
   }, [dispatch]);
-
-  const nameRef = useRef(null);
-  const canSave = [name, price].every(Boolean);
-  useEffect(() => {
-    nameRef.current.focus();
-  }, []);
 
   const onRemovePreview = () => {
     setImage("");
@@ -51,24 +33,39 @@ const MdV3ProductUpdate = () => {
     setPreview(URL.createObjectURL(files));
   };
 
+  useEffect(() => {
+    if (item) {
+      setName(item?.name);
+      setImage(item?.imageName);
+      setPreview(item?.imageUrl);
+    }
+  }, [item]);
+
+  const canSave = [name].every(Boolean);
+  const { enqueueSnackbar } = useSnackbar();
+
+  const nameRef = useRef();
+  useEffect(() => {
+    nameRef.current.focus();
+  }, []);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (canSave) {
       const formData = new FormData();
       formData.append("id", id);
       formData.append("name", name);
-      formData.append("price", price);
       formData.append("image", image);
       dispatch(updateProduct(formData))
         .unwrap()
         .then((res) => {
+          enqueueSnackbar(res.message, { variant: "success" });
           dispatch(getProducts());
-          enqueueSnackbar(res?.message, { variant: "success" });
           dispatch(setSort("updatedAt"));
           navigate(-1);
         })
         .catch((err) => {
-          console.log(err);
+          console.log("err", err);
           enqueueSnackbar(err, { variant: "error" });
         });
     }
@@ -79,8 +76,6 @@ const MdV3ProductUpdate = () => {
       <form onSubmit={handleSubmit}>
         <Label id="name">name</Label>
         <InputRef ref={nameRef} id="name" value={name} onChange={(e) => setName(e.target.value)} />
-        <Label id="price">price</Label>
-        <Input type="number" id="price" value={price} onChange={(e) => setPrice(e.target.value)} />
         <Label id="image">Image</Label>
         <Input type="file" onChange={handleChangeProduct} />
         {preview ? (
@@ -102,4 +97,4 @@ const MdV3ProductUpdate = () => {
   );
 };
 
-export default MdV3ProductUpdate;
+export default MysV3ProductUpdate;

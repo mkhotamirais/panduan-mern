@@ -78,7 +78,7 @@ const MdV3ProductPost = () => {
             </button>
             <img src={preview} width={200} alt="image preview" className="object-contain object-center w-full h-full" />
           </div>
-        ) : null}{" "}
+        ) : null}
         <Button type="submit" disabled={!canSave} className={"py-2"}>
           {status === "loading" ? <PiSpinner className="animate-spin inline text-xl" /> : "post"}
         </Button>
