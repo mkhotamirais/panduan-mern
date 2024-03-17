@@ -12,14 +12,9 @@ const { verifyToken } = require("./middleware/verifyAuth");
 app.use(logSuccess);
 
 app.use(cookieParser());
-// app.use(credentials);
-// app.use(cors(corsOptions));
-app.use(
-  cors({
-    origin: ["http://localhost:5173"],
-    credentials: true,
-  })
-);
+app.use(credentials);
+app.use(cors(corsOptions));
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(rootPath, "public")));

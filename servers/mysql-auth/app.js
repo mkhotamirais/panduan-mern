@@ -7,8 +7,6 @@ const conn = require("./config");
 const cookieParser = require("cookie-parser");
 const { credentials, corsOptions } = require("./config/cred");
 const { logSuccess, logError } = require("./middleware/logger");
-const User = require("./app/user/model");
-const Product = require("./app/product/model");
 
 // (async () => {
 //   // await conn.sync();

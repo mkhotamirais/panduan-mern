@@ -84,6 +84,21 @@ import NnWorkout from "./pages/merns/netninja/workout/NnWorkout.jsx";
 import NnWorkoutPost from "./pages/merns/netninja/workout/NnWorkoutPost.jsx";
 import NnV1Signin from "./pages/merns/netninja/auth/NnV1Signin.jsx";
 import NnV1Signup from "./pages/merns/netninja/auth/NnV1Signup.jsx";
+import MysqlLayout from "./pages/fundamentals/mysql/MysqlLayout.jsx";
+import Mysql from "./pages/fundamentals/mysql/Mysql.jsx";
+import MysV1Product from "./pages/fundamentals/mysql/v1/MysV1Product.jsx";
+import MysV2Product from "./pages/fundamentals/mysql/v2/MysV2Product.jsx";
+import MysV3Product from "./pages/fundamentals/mysql/v3/MysV3Product.jsx";
+import MysV1ProductPost from "./pages/fundamentals/mysql/v1/MysV1ProductPost.jsx";
+import MysV1ProductDetail from "./pages/fundamentals/mysql/v1/MysV1ProductDetail.jsx";
+import MysV1ProductUpdate from "./pages/fundamentals/mysql/v1/MysV1ProductUpdate.jsx";
+import MysV2User from "./pages/fundamentals/mysql/v2/MysV2User.jsx";
+import MysV2ProductPost from "./pages/fundamentals/mysql/v2/MysV2ProductPost.jsx";
+import MysV2ProductDetail from "./pages/fundamentals/mysql/v2/MysV2ProductDetail.jsx";
+import MysV2ProductUpdate from "./pages/fundamentals/mysql/v2/MysV2ProductUpdate.jsx";
+import MysV2UserPost from "./pages/fundamentals/mysql/v2/MysV2UserPost.jsx";
+import MysV2UserDetail from "./pages/fundamentals/mysql/v2/MysV2UserDetail.jsx";
+import MysV2UserUpdate from "./pages/fundamentals/mysql/v2/MysV2UserUpdate.jsx";
 
 axios.defaults.withCredentials = true;
 
@@ -164,6 +179,30 @@ const router = createBrowserRouter(
               <Route path="post" element={<MdV3ProductPost />} />
               <Route path="detail/:id" element={<MdV3ProductDetail />} />
               <Route path="update/:id" element={<MdV3ProductUpdate />} />
+            </Route>
+          </Route>
+          <Route path="mysql" element={<MysqlLayout />}>
+            <Route index element={<Mysql />} />
+            <Route path="mys-v1-product">
+              <Route index element={<MysV1Product />} />
+              <Route path="post" element={<MysV1ProductPost />} />
+              <Route path="detail/:id" element={<MysV1ProductDetail />} />
+              <Route path="update/:id" element={<MysV1ProductUpdate />} />
+            </Route>
+            <Route path="mys-v2-product">
+              <Route index element={<MysV2Product />} />
+              <Route path="post" element={<MysV2ProductPost />} />
+              <Route path="detail/:id" element={<MysV2ProductDetail />} />
+              <Route path="update/:id" element={<MysV2ProductUpdate />} />
+            </Route>
+            <Route path="mys-v2-user">
+              <Route index element={<MysV2User />} />
+              <Route path="post" element={<MysV2UserPost />} />
+              <Route path="detail/:id" element={<MysV2UserDetail />} />
+              <Route path="update/:id" element={<MysV2UserUpdate />} />
+            </Route>
+            <Route path="mys-v3-product">
+              <Route index element={<MysV3Product />} />
             </Route>
           </Route>
           <Route path="mysql-basic" element={<MysqlBasic />}>

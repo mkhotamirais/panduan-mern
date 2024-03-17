@@ -18,6 +18,10 @@ const MdV1ProductUpdate = () => {
   const [description, setDescription] = useState("");
 
   useEffect(() => {
+    dispatch(getProducts());
+  }, [dispatch]);
+
+  useEffect(() => {
     if (item) {
       setName(item?.name);
       setPrice(item?.price);

@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 const basicList = ["freecodecamp", "redux thunk", "redux rtk"];
 const filesList = ["enam", "tujuh", "delapan"];
 const authList = ["netninja", "sepuhl"];
-const fundamentalList = ["mongodb", "mysql basic", "mysql files", "mysql auth", "mysql relational"];
+const fundamentalList = ["mongodb", "mysql", "mysql basic", "mysql files", "mysql auth", "mysql relational"];
 
 export const SidebarContentList = ({ title, data }) => {
   const location = useLocation();
