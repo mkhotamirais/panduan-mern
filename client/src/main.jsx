@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 import "./index.css";
-import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, createRoutesFromElements, redirect, Route, RouterProvider } from "react-router-dom";
 import { Provider } from "react-redux";
 import { store } from "./app/store.js";
 import { SnackbarProvider } from "notistack";
@@ -78,6 +78,12 @@ import MdV3Product from "./pages/fundamentals/mongodb/v3/MdV3Product.jsx";
 import MdV3ProductDetail from "./pages/fundamentals/mongodb/v3/MdV3ProductDetail.jsx";
 import MdV3ProductPost from "./pages/fundamentals/mongodb/v3/MdV3ProductPost.jsx";
 import MdV3ProductUpdate from "./pages/fundamentals/mongodb/v3/MdV3ProductUpdate.jsx";
+import NnLayout from "./pages/merns/netninja/NnLayout.jsx";
+import NnHome from "./pages/merns/netninja/NnHome.jsx";
+import NnWorkout from "./pages/merns/netninja/workout/NnWorkout.jsx";
+import NnWorkoutPost from "./pages/merns/netninja/workout/NnWorkoutPost.jsx";
+import NnV1Signin from "./pages/merns/netninja/auth/NnV1Signin.jsx";
+import NnV1Signup from "./pages/merns/netninja/auth/NnV1Signup.jsx";
 
 axios.defaults.withCredentials = true;
 
@@ -95,6 +101,25 @@ const router = createBrowserRouter(
               <Route path="detail/:id" element={<FccBookDetail />} />
               <Route path="update/:id" element={<FccBookUpdate />} />
             </Route>
+          </Route>
+          <Route path="netninja" element={<NnLayout />}>
+            <Route index element={<NnHome />} />
+            <Route
+              path="nn-v1-workout"
+              loader={() => {
+                const user = JSON.parse(localStorage.getItem("nnV1User"));
+                if (!user) {
+                  alert(`Silahkan signin dahulu`);
+                  throw redirect("/netninja/nn-v1-signin");
+                }
+                return { user };
+              }}
+            >
+              <Route index element={<NnWorkout />} />
+              <Route path="post" element={<NnWorkoutPost />} />
+            </Route>
+            <Route path="nn-v1-signin" element={<NnV1Signin />} />
+            <Route path="nn-v1-signup" element={<NnV1Signup />} />
           </Route>
           <Route path="redux-thunk" element={<ReduxThunk />}>
             <Route index element={<ReduxThunkHome />} />

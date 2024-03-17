@@ -35,9 +35,9 @@ app.use("/mongodb/v1/product", require("./app/v1/product/router"));
 app.use("/mongodb/v2/product", require("./app/v2/product/router"));
 app.use("/mongodb/v2/category", require("./app/v2/category/router"));
 app.use("/mongodb/v3/product", require("./app/v3/products/router"));
-app.use("/v4/user", require("./app/v4/user/router"));
-app.use("/v4/auth", require("./app/v4/auth/router"));
-app.use("/v4/product", require("./app/v4/product/router"));
+app.use("/mongodb/v4/user", require("./app/v4/user/router"));
+app.use("/mongodb/v4/auth", require("./app/v4/auth/router"));
+app.use("/mongodb/v4/product", require("./app/v4/product/router"));
 
 // errors
 app.all("/*", (req, res) => {

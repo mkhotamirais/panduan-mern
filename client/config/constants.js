@@ -7,7 +7,8 @@ const msa = "http://localhost:5500/mysql-auth";
 
 const url = {
   mongodb: "http://localhost:5500/mongodb",
+  netninja: "http://localhost:5500/netninja",
 };
 
-export const { mongodb: md } = url;
+export const { mongodb: md, netninja: nn } = url;
 export { fcc, reduxThunk, mysqlBasic, mysqlRelational, msf, msa };
