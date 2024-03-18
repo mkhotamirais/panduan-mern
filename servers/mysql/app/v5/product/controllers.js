@@ -8,12 +8,12 @@ const getProducts = async (req, res) => {
     let response;
     if (req.role === "admin") {
       response = await Product.findAll({
-        attributes: ["uuid", "name", "price"],
+        // attributes: ["uuid", "name", "price"],
         include: [{ model: User, attributes: ["name", "email"] }],
       });
     } else {
       response = await Product.findAll({
-        attributes: ["uuid", "name", "price"],
+        // attributes: ["uuid", "name", "price"],
         where: { userId: req.userId },
         include: [{ model: User, attributes: ["name", "email"] }],
       });
@@ -31,13 +31,13 @@ const getProduct = async (req, res) => {
     let response;
     if (req.role === "admin") {
       response = await Product.findOne({
-        attributes: ["uuid", "name", "price"],
+        // attributes: ["uuid", "name", "price"],
         where: { id: product.id },
         include: [{ model: User, attributes: ["name", "email"] }],
       });
     } else {
       response = await Product.findOne({
-        attributes: ["uuid", "name", "price"],
+        // attributes: ["uuid", "name", "price"],
         where: { [Op.and]: [{ id: product.id }, { userId: req.userId }] },
         include: [{ model: User, attributes: ["name", "email"] }],
       });

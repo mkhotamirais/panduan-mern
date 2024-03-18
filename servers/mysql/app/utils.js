@@ -2,7 +2,7 @@ const badRequest = (res, message) => res.status(400).json({ message });
 const conflict = (res, message) => res.status(409).json({ message });
 const unauthorized = (res, status) =>
   res.status(401).json({ message: status === "no token" ? "anda tidak login" : "username atau password salah" });
-const forbidden = (res) => res.status(403).json({ message: "Forbidden" });
+const forbidden = (res, message = "forbidden") => res.status(403).json({ message });
 // const internalServerError = (res, message) => res.status(500).json({ message });
 
 const noContent = (res) => res.status(204).json({ message: "no content" });

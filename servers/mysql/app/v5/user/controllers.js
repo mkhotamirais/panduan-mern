@@ -1,11 +1,14 @@
-const { badRequest, ok } = require("../../utils");
+const { badRequest, ok, created } = require("../../utils");
 const User = require("./model");
 const argon2 = require("argon2");
 
 // users
 const getUsers = async (req, res) => {
   try {
-    const users = await User.findAll({ attributes: ["uuid", "name", "email", "role"] });
+    const users = await User.findAll({
+      // attributes: ["uuid", "name", "email", "role"],
+      attributes: { exclude: ["password"] },
+    });
     ok(res, `get users`, users);
   } catch (error) {
     badRequest(res, error?.original?.sqlMessage || error.message);

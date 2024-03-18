@@ -25,38 +25,6 @@ import ReduxThunkDetail from "./pages/merns/reduxThunk/product/ReduxThunkDetail.
 import ReduxRtkProductPost from "./pages/merns/reduxRtk/product/ReduxRtkProductPost.jsx";
 import ReduxRtkProductDetail from "./pages/merns/reduxRtk/product/ReduxRtkProductDetail.jsx";
 import ReduxRtkProductUpdate from "./pages/merns/reduxRtk/product/ReduxRtkProductUpdate.jsx";
-import MysqlBasic from "./pages/mysqls/mysqlBasic/MysqlBasic.jsx";
-import MySBasicHome from "./pages/mysqls/mysqlBasic/MySBasicHome.jsx";
-import MysqlFiles from "./pages/mysqls/mysqlFiles/MysqlFiles.jsx";
-import MysqlAuth from "./pages/mysqls/mysqlAuth/MysqlAuth.jsx";
-import MySFilesHome from "./pages/mysqls/mysqlFiles/MySFilesHome.jsx";
-import MySAuthHome from "./pages/mysqls/mysqlAuth/MySAuthHome.jsx";
-import MsbProduct from "./pages/mysqls/mysqlBasic/product/MsbProduct.jsx";
-import MsaProduct from "./pages/mysqls/mysqlAuth/product/MsaProduct.jsx";
-import MsbProductPost from "./pages/mysqls/mysqlBasic/product/MsbProductPost.jsx";
-import MsbProductUpdate from "./pages/mysqls/mysqlBasic/product/MsbProductUpdate.jsx";
-import MsbProductDetail from "./pages/mysqls/mysqlBasic/product/MsbProductDetail.jsx";
-import MysqlRelational from "./pages/mysqls/mysqlRelational/MysqlRelational.jsx";
-import MsrHome from "./pages/mysqls/mysqlRelational/MsrHome.jsx";
-import MsrProduct from "./pages/mysqls/mysqlRelational/product/MsrProduct.jsx";
-import MsrUser from "./pages/mysqls/mysqlRelational/user/MsrUser.jsx";
-import MsrProductPost from "./pages/mysqls/mysqlRelational/product/MsrProductPost.jsx";
-import MsrUserPost from "./pages/mysqls/mysqlRelational/user/MsrUserPost.jsx";
-import MsrUserDetail from "./pages/mysqls/mysqlRelational/user/MsrUserDetail.jsx";
-import MsrUserUpdate from "./pages/mysqls/mysqlRelational/user/MsrUserUpdate.jsx";
-import MsrProductDetail from "./pages/mysqls/mysqlRelational/product/MsrProductDetail.jsx";
-import MsrProductUpdate from "./pages/mysqls/mysqlRelational/product/MsrProductUpdate.jsx";
-import MsfUser from "./pages/mysqls/mysqlFiles/product/MsfUser";
-import MsfUserPost from "./pages/mysqls/mysqlFiles/product/MsfUserPost.jsx";
-import MsfUserDetail from "./pages/mysqls/mysqlFiles/product/MsfUserDetail.jsx";
-import MsfUserUpdate from "./pages/mysqls/mysqlFiles/product/MsfUserUpdate.jsx";
-import MsaUser from "./pages/mysqls/mysqlAuth/user/MsaUser.jsx";
-import MsaUserDetail from "./pages/mysqls/mysqlAuth/user/MsaUserDetail.jsx";
-import MsaUserPost from "./pages/mysqls/mysqlAuth/user/MsaUserPost.jsx";
-import MsaProductDetail from "./pages/mysqls/mysqlAuth/product/MsaProductDetail.jsx";
-import MsaProductPost from "./pages/mysqls/mysqlAuth/product/MsaProductPost.jsx";
-import MsaSignin from "./pages/mysqls/mysqlAuth/auth/MsaSignin.jsx";
-import MsaSignup from "./pages/mysqls/mysqlAuth/auth/MsaSignup.jsx";
 import axios from "axios";
 import HomeLayout from "./pages/HomeLayout.jsx";
 import Home from "./pages/Home.jsx";
@@ -102,6 +70,16 @@ import MysV2UserUpdate from "./pages/fundamentals/mysql/v2/MysV2UserUpdate.jsx";
 import MysV3ProductPost from "./pages/fundamentals/mysql/v3/MysV3ProductPost.jsx";
 import MysV3ProductDetail from "./pages/fundamentals/mysql/v3/MysV3ProductDetail.jsx";
 import MysV3ProductUpdate from "./pages/fundamentals/mysql/v3/MysV3ProductUpdate.jsx";
+import MysV5Product from "./pages/fundamentals/mysql/v5/MysV5Product.jsx";
+import MysV5ProductPost from "./pages/fundamentals/mysql/v5/MysV5ProductPost.jsx";
+import MysV5ProductDetail from "./pages/fundamentals/mysql/v5/MysV5ProductDetail.jsx";
+import MysV5ProductUpdate from "./pages/fundamentals/mysql/v5/MysV5ProductUpdate.jsx";
+import MysV5User from "./pages/fundamentals/mysql/v5/MysV5User.jsx";
+// import MysV5UserPost from "./pages/fundamentals/mysql/v5/MysV5UserPost.jsx";
+import MysV5UserDetail from "./pages/fundamentals/mysql/v5/MysV5UserDetail.jsx";
+import MysV5UserUpdate from "./pages/fundamentals/mysql/v5/MysV5UserUpdate.jsx";
+import MysV5Signin from "./pages/fundamentals/mysql/v5/MysV5Signin.jsx";
+import MysV5Signup from "./pages/fundamentals/mysql/v5/MysV5Signup.jsx";
 
 axios.defaults.withCredentials = true;
 
@@ -210,54 +188,20 @@ const router = createBrowserRouter(
               <Route path="detail/:id" element={<MysV3ProductDetail />} />
               <Route path="update/:id" element={<MysV3ProductUpdate />} />
             </Route>
-          </Route>
-          <Route path="mysql-basic" element={<MysqlBasic />}>
-            <Route index element={<MySBasicHome />} />
-            <Route path="product">
-              <Route index element={<MsbProduct />} />
-              <Route path="post" element={<MsbProductPost />} />
-              <Route path="detail/:id" element={<MsbProductDetail />} />
-              <Route path="update/:id" element={<MsbProductUpdate />} />
+            <Route path="mys-v5-product">
+              <Route index element={<MysV5Product />} />
+              <Route path="post" element={<MysV5ProductPost />} />
+              <Route path="detail/:id" element={<MysV5ProductDetail />} />
+              <Route path="update/:id" element={<MysV5ProductUpdate />} />
             </Route>
-          </Route>
-          <Route path="mysql-files" element={<MysqlFiles />}>
-            <Route index element={<MySFilesHome />} />
-            <Route path="product">
-              <Route index element={<MsfUser />} />
-              <Route path="post" element={<MsfUserPost />} />
-              <Route path="detail/:id" element={<MsfUserDetail />} />
-              <Route path="update/:id" element={<MsfUserUpdate />} />
+            <Route path="mys-v5-user">
+              <Route index element={<MysV5User />} />
+              {/* <Route path="post" element={<MysV5UserPost />} /> */}
+              <Route path="detail/:id" element={<MysV5UserDetail />} />
+              <Route path="update/:id" element={<MysV5UserUpdate />} />
             </Route>
-          </Route>
-          <Route path="mysql-auth" element={<MysqlAuth />}>
-            <Route index element={<MySAuthHome />} />
-            <Route path="product">
-              <Route index element={<MsaProduct />} />
-              <Route path="detail/:id" element={<MsaProductDetail />} />
-              <Route path="post" element={<MsaProductPost />} />
-            </Route>
-            <Route path="user">
-              <Route index element={<MsaUser />} />
-              <Route path="detail/:id" element={<MsaUserDetail />} />
-              <Route path="post" element={<MsaUserPost />} />
-            </Route>
-            <Route path="signin" element={<MsaSignin />} />
-            <Route path="signup" element={<MsaSignup />} />
-          </Route>
-          <Route path="mysql-relational" element={<MysqlRelational />}>
-            <Route index element={<MsrHome />} />
-            <Route path="product">
-              <Route index element={<MsrProduct />} />
-              <Route path="update/:id" element={<MsrProductUpdate />} />
-              <Route path="detail/:id" element={<MsrProductDetail />} />
-              <Route path="post" element={<MsrProductPost />} />
-            </Route>
-            <Route path="user">
-              <Route index element={<MsrUser />} />
-              <Route path="post" element={<MsrUserPost />} />
-              <Route path="update/:id" element={<MsrUserUpdate />} />
-              <Route path="detail/:id" element={<MsrUserDetail />} />
-            </Route>
+            <Route path="mys-v5-signin" element={<MysV5Signin />} />
+            <Route path="mys-v5-signup" element={<MysV5Signup />} />
           </Route>
         </Route>
       </Route>

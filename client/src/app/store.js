@@ -4,14 +4,7 @@ import v1FccBookReducer from "./features/freecodecamp/v1FccBookSlice";
 import reduxThunkReducer from "./features/reduxThunk/reduxThunkSlice";
 import { apiSlice } from "./api/apiSlice";
 import productRtkReducer from "./features/reduxRtk/productRtkSlice";
-import mysqlBasicReducer from "./features/mysqlBasic/mysqlBasicSlice";
 // import { productApiSlice } from "./features/reduxRtk/productApiSlice";
-import msrProductReducer from "./features/mysqlRelational/msrProductSlice";
-import msrUserReducer from "./features/mysqlRelational/msrUserSlice";
-import msfUserReducer from "./features/mysqlFiles/msfUserSlice";
-import msaUserReducer from "./features/mysqlAuth/msaUserSlice";
-import msaProductReducer from "./features/mysqlAuth/msaProductSlice";
-import msaAuthReducer from "./features/mysqlAuth/msaAuthSlice";
 import mdV1ProductReducer from "./features/mongodb/mdV1ProductSlice";
 import mdV2ProductReducer from "./features/mongodb/mdV2ProductSlice";
 import mdV2CategoryReducer from "./features/mongodb/mdV2CategorySlice";
@@ -20,6 +13,9 @@ import mysV1ProductReducer from "./features/mysql/mysV1ProductSlice";
 import mysV2ProductReducer from "./features/mysql/mysV2ProductSlice";
 import mysV2UserReducer from "./features/mysql/mysV2UserSlice";
 import mysV3ProductReducer from "./features/mysql/mysV3ProductSlice";
+import mysV5ProductReducer from "./features/mysql/mysV5ProductSlice";
+import mysV5UserReducer from "./features/mysql/mysV5UserSlice";
+import mysV5AuthReducer from "./features/mysql/mysV5AuthSlice";
 
 export const store = configureStore({
   reducer: {
@@ -27,13 +23,6 @@ export const store = configureStore({
     v1FccBook: v1FccBookReducer,
     reduxThunk: reduxThunkReducer,
     productRtk: productRtkReducer,
-    mysqlBasic: mysqlBasicReducer,
-    msrProduct: msrProductReducer,
-    msrUser: msrUserReducer,
-    msfUser: msfUserReducer,
-    msaUser: msaUserReducer,
-    msaProduct: msaProductReducer,
-    msaAuth: msaAuthReducer,
     mdV1Product: mdV1ProductReducer,
     mdV2Product: mdV2ProductReducer,
     mdV2Category: mdV2CategoryReducer,
@@ -42,6 +31,9 @@ export const store = configureStore({
     mysV2Product: mysV2ProductReducer,
     mysV2User: mysV2UserReducer,
     mysV3Product: mysV3ProductReducer,
+    mysV5Product: mysV5ProductReducer,
+    mysV5User: mysV5UserReducer,
+    mysV5Auth: mysV5AuthReducer,
     [apiSlice.reducerPath]: apiSlice.reducer,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(apiSlice.middleware),

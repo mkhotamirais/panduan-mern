@@ -14,7 +14,7 @@ const verifyUserSess = async (req, res, next) => {
 const adminOnlySess = async (req, res, next) => {
   const user = await User.findOne({ where: { uuid: req.session.userId } });
   if (!user) return badRequest(res, `user tidak ditemukan`);
-  if (user.role !== "admin") return forbidden(res);
+  if (user.role !== "admin") return forbidden(res, "admin only");
   next();
 };
 

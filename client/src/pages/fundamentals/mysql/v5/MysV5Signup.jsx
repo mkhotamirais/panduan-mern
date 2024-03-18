@@ -1,22 +1,12 @@
 import { Link } from "react-router-dom";
 import { Button, Input, InputRef, Label } from "../../../../components/Tags";
-import { useEffect, useRef, useState } from "react";
-import useNnV1Signin from "../hooks/useNnV1Signin";
+import { useRef, useState } from "react";
 
-const NnV1Signin = () => {
+const MysV5Signup = () => {
   const emailRef = useRef();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { signin, isLoading } = useNnV1Signin();
-
-  useEffect(() => {
-    emailRef.current.focus();
-  }, []);
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    await signin(email, password);
-  };
+  const handleSubmit = () => {};
   return (
     <section className="rounded flex itemc justify-center">
       <div className="w-full mx-3 md:w-2/3 xl:w-1/2 border rounded p-4">
@@ -25,14 +15,12 @@ const NnV1Signin = () => {
           <InputRef ref={emailRef} value={email} onChange={(e) => setEmail(e.target.value)} />
           <Label id="password">password</Label>
           <Input value={password} onChange={(e) => setPassword(e.target.value)} />
-          <Button type="submit" disabled={isLoading}>
-            signin
-          </Button>
+          <Button type="submit">signup</Button>
         </form>
         <p>
-          Do not have an account ?{" "}
-          <Link to="../nn-v1-signup" className="text-blue-500">
-            Signup
+          Already have an account ?{" "}
+          <Link to="../mys-v5-signin" className="text-blue-500">
+            Signin
           </Link>
         </p>
       </div>
@@ -40,4 +28,4 @@ const NnV1Signin = () => {
   );
 };
 
-export default NnV1Signin;
+export default MysV5Signup;
