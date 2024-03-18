@@ -44,7 +44,6 @@ export const mysV5AuthSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(signin.fulfilled, (state, action) => {
-        console.log(state.data);
         state.isLoading = false;
         state.isSuccess = true;
         state.data = action.payload;

@@ -80,6 +80,15 @@ import MysV5UserDetail from "./pages/fundamentals/mysql/v5/MysV5UserDetail.jsx";
 import MysV5UserUpdate from "./pages/fundamentals/mysql/v5/MysV5UserUpdate.jsx";
 import MysV5Signin from "./pages/fundamentals/mysql/v5/MysV5Signin.jsx";
 import MysV5Signup from "./pages/fundamentals/mysql/v5/MysV5Signup.jsx";
+import MysV4Product from "./pages/fundamentals/mysql/v4/MysV4Product.jsx";
+import MysV4ProductPost from "./pages/fundamentals/mysql/v4/MysV4ProductPost.jsx";
+import MysV4ProductDetail from "./pages/fundamentals/mysql/v4/MysV4ProductDetail.jsx";
+import MysV4ProductUpdate from "./pages/fundamentals/mysql/v4/MysV4ProductUpdate.jsx";
+import MysV4User from "./pages/fundamentals/mysql/v4/MysV4User.jsx";
+import MysV4UserDetail from "./pages/fundamentals/mysql/v4/MysV4UserDetail.jsx";
+import MysV4UserUpdate from "./pages/fundamentals/mysql/v4/MysV4UserUpdate.jsx";
+import MysV4Signin from "./pages/fundamentals/mysql/v4/MysV4Signin.jsx";
+import MysV4Signup from "./pages/fundamentals/mysql/v4/MysV4Signup.jsx";
 
 axios.defaults.withCredentials = true;
 
@@ -188,6 +197,20 @@ const router = createBrowserRouter(
               <Route path="detail/:id" element={<MysV3ProductDetail />} />
               <Route path="update/:id" element={<MysV3ProductUpdate />} />
             </Route>
+            <Route path="mys-v4-product">
+              <Route index element={<MysV4Product />} />
+              <Route path="post" element={<MysV4ProductPost />} />
+              <Route path="detail/:id" element={<MysV4ProductDetail />} />
+              <Route path="update/:id" element={<MysV4ProductUpdate />} />
+            </Route>
+            <Route path="mys-v4-user">
+              <Route index element={<MysV4User />} />
+              {/* <Route path="post" element={<MysV4UserPost />} /> */}
+              <Route path="detail/:id" element={<MysV4UserDetail />} />
+              <Route path="update/:id" element={<MysV4UserUpdate />} />
+            </Route>
+            <Route path="mys-v4-signin" element={<MysV4Signin />} />
+            <Route path="mys-v4-signup" element={<MysV4Signup />} />
             <Route path="mys-v5-product">
               <Route index element={<MysV5Product />} />
               <Route path="post" element={<MysV5ProductPost />} />

@@ -13,6 +13,9 @@ import mysV1ProductReducer from "./features/mysql/mysV1ProductSlice";
 import mysV2ProductReducer from "./features/mysql/mysV2ProductSlice";
 import mysV2UserReducer from "./features/mysql/mysV2UserSlice";
 import mysV3ProductReducer from "./features/mysql/mysV3ProductSlice";
+import mysV4AuthReducer from "./features/mysql/mysV4AuthSlice";
+import mysV4ProductReducer from "./features/mysql/mysV4ProductSlice";
+import mysV4UserReducer from "./features/mysql/mysV4UserSlice";
 import mysV5ProductReducer from "./features/mysql/mysV5ProductSlice";
 import mysV5UserReducer from "./features/mysql/mysV5UserSlice";
 import mysV5AuthReducer from "./features/mysql/mysV5AuthSlice";
@@ -31,6 +34,9 @@ export const store = configureStore({
     mysV2Product: mysV2ProductReducer,
     mysV2User: mysV2UserReducer,
     mysV3Product: mysV3ProductReducer,
+    mysV4Auth: mysV4AuthReducer,
+    mysV4Product: mysV4ProductReducer,
+    mysV4User: mysV4UserReducer,
     mysV5Product: mysV5ProductReducer,
     mysV5User: mysV5UserReducer,
     mysV5Auth: mysV5AuthReducer,

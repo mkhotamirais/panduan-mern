@@ -1,24 +1,27 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getProducts, setSort, setView } from "../../../../app/features/mysql/mysV5ProductSlice";
-import { Err, GridCard, Loading, PostBtn } from "../../../../components/Components";
-import MysV5ProductCard from "./MysV5ProductCard";
-import MysV5ProductTable from "./MysV5ProductTable";
+import { getUsers, setSort, setView } from "../../../../app/features/mysql/mysV4UserSlice";
+import { Err, GridCard, Loading } from "../../../../components/Components";
+import MysV4UserCard from "./MysV4UserCard";
+import MysV4UserTable from "./MysV4UserTable";
 import { Link } from "react-router-dom";
 
-const MysV5Product = () => {
+const MysV4User = () => {
   const dispatch = useDispatch();
-  const { data: products, status, error, sort, view } = useSelector((state) => state.mysV5Product);
+  const { data: users, status, error, sort, view } = useSelector((state) => state.mysV4User);
+  const { token } = useSelector((state) => state.mysV4Auth);
 
   useEffect(() => {
-    dispatch(getProducts());
-  }, [dispatch]);
+    if (token) {
+      dispatch(getUsers(token));
+    }
+  }, [dispatch, token]);
 
   let sortedData;
-  if (sort === "asc") sortedData = products?.slice().sort((a, b) => (a.name > b.name ? 1 : b.name > a.name ? -1 : 0));
-  else if (sort === "desc") sortedData = products?.slice().sort((a, b) => (a.name > b.name ? -1 : b.name > a.name ? 1 : 0));
-  else if (sort === "createdAt") sortedData = products?.slice().sort((a, b) => b?.createdAt?.localeCompare(a.createdAt));
-  else if (sort === "updatedAt") sortedData = products?.slice().sort((a, b) => b?.updatedAt?.localeCompare(a.updatedAt));
+  if (sort === "asc") sortedData = users?.slice().sort((a, b) => (a.name > b.name ? 1 : b.name > a.name ? -1 : 0));
+  else if (sort === "desc") sortedData = users?.slice().sort((a, b) => (a.name > b.name ? -1 : b.name > a.name ? 1 : 0));
+  else if (sort === "createdAt") sortedData = users?.slice().sort((a, b) => b?.createdAt?.localeCompare(a.createdAt));
+  else if (sort === "updatedAt") sortedData = users?.slice().sort((a, b) => b?.updatedAt?.localeCompare(a.updatedAt));
 
   let content;
   if (status === "loading") content = <Loading />;
@@ -26,18 +29,17 @@ const MysV5Product = () => {
     content = (
       <Err>
         {error}{" "}
-        <Link to="/mysql/mys-v5-signin" className="text-blue-500">
+        <Link to="/mysql/mys-v4-signin" className="text-blue-500">
           signin
         </Link>
       </Err>
     );
   else if (status === "succeeded") {
-    if (products.length > 0) {
-      const renderedProductsCard = products && sortedData?.map((item) => <MysV5ProductCard key={item?.id} item={item} />);
-      const renderedProductsTable =
-        products && sortedData?.map((item, i) => <MysV5ProductTable key={item?.id} item={item} i={i} />);
+    if (users.length > 0) {
+      const renderedUsersCard = users && sortedData?.map((item) => <MysV4UserCard key={item?.id} item={item} />);
+      const renderedUsersTable = users && sortedData?.map((item, i) => <MysV4UserTable key={item?.id} item={item} i={i} />);
       if (view === "card") {
-        content = <GridCard>{renderedProductsCard}</GridCard>;
+        content = <GridCard>{renderedUsersCard}</GridCard>;
       } else if (view === "table") {
         content = (
           <table>
@@ -45,24 +47,24 @@ const MysV5Product = () => {
               <tr>
                 <th>No</th>
                 <th>Name</th>
-                <th className="hidden sm:table-cell">Price</th>
-                <th className="hidden md:table-cell">Author</th>
+                <th className="hidden sm:table-cell">role</th>
+                <th className="hidden md:table-cell">email</th>
                 <th className="hidden lg:table-cell">CreatedAt</th>
                 <th className="hidden xl:table-cell">UpdatedAt</th>
                 <th>Action</th>
               </tr>
             </thead>
-            <tbody>{renderedProductsTable}</tbody>
+            <tbody>{renderedUsersTable}</tbody>
           </table>
         );
       }
-    } else if (products.length == 0) content = <div className="flex justify-center mt-5 italic">no content</div>;
+    } else if (users.length == 0) content = <div className="flex justify-center mt-5 italic">no content</div>;
   }
 
   return (
     <div>
       <div className="flex justify-between my-1 items-center">
-        <PostBtn />
+        {/* <PostBtn /> */}
         <div className="flex gap-1">
           <select
             name="view"
@@ -70,7 +72,7 @@ const MysV5Product = () => {
             value={view}
             onChange={(e) => {
               dispatch(setView(e.target.value));
-              localStorage.setItem("mysV5ProductView", JSON.stringify(e.target.value));
+              localStorage.setItem("mysV4UserView", JSON.stringify(e.target.value));
             }}
             className="border border-blue-400 p-1 rounded"
           >
@@ -100,4 +102,4 @@ const MysV5Product = () => {
   );
 };
 
-export default MysV5Product;
+export default MysV4User;

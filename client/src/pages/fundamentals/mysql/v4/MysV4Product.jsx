@@ -1,18 +1,25 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getProducts, setSort, setView } from "../../../../app/features/mysql/mysV5ProductSlice";
+import { getProducts, setSort, setView } from "../../../../app/features/mysql/mysV4ProductSlice";
 import { Err, GridCard, Loading, PostBtn } from "../../../../components/Components";
-import MysV5ProductCard from "./MysV5ProductCard";
-import MysV5ProductTable from "./MysV5ProductTable";
+import MysV4ProductCard from "./MysV4ProductCard";
+import MysV4ProductTable from "./MysV4ProductTable";
 import { Link } from "react-router-dom";
+import { Button } from "../../../../components/Tags";
 
-const MysV5Product = () => {
+const MysV4Product = () => {
   const dispatch = useDispatch();
-  const { data: products, status, error, sort, view } = useSelector((state) => state.mysV5Product);
+  const { data: products, status, error, sort, view } = useSelector((state) => state.mysV4Product);
+  const { token } = useSelector((state) => state.mysV4Auth);
 
   useEffect(() => {
-    dispatch(getProducts());
-  }, [dispatch]);
+    if (token) {
+      dispatch(getProducts(token));
+    }
+  }, [dispatch, token]);
+  useEffect(() => {
+    console.log(products.length);
+  }, [products]);
 
   let sortedData;
   if (sort === "asc") sortedData = products?.slice().sort((a, b) => (a.name > b.name ? 1 : b.name > a.name ? -1 : 0));
@@ -26,16 +33,16 @@ const MysV5Product = () => {
     content = (
       <Err>
         {error}{" "}
-        <Link to="/mysql/mys-v5-signin" className="text-blue-500">
+        <Link to="/mysql/mys-v4-signin" className="text-blue-500">
           signin
         </Link>
       </Err>
     );
   else if (status === "succeeded") {
     if (products.length > 0) {
-      const renderedProductsCard = products && sortedData?.map((item) => <MysV5ProductCard key={item?.id} item={item} />);
+      const renderedProductsCard = products && sortedData?.map((item) => <MysV4ProductCard key={item?.id} item={item} />);
       const renderedProductsTable =
-        products && sortedData?.map((item, i) => <MysV5ProductTable key={item?.id} item={item} i={i} />);
+        products && sortedData?.map((item, i) => <MysV4ProductTable key={item?.id} item={item} i={i} />);
       if (view === "card") {
         content = <GridCard>{renderedProductsCard}</GridCard>;
       } else if (view === "table") {
@@ -57,7 +64,15 @@ const MysV5Product = () => {
         );
       }
     } else if (products.length == 0) content = <div className="flex justify-center mt-5 italic">no content</div>;
-  }
+  } else
+    content = (
+      <div>
+        anda tidak login{" "}
+        <Button>
+          <Link to="/mysql/mys-v4-signin">signin</Link>
+        </Button>
+      </div>
+    );
 
   return (
     <div>
@@ -70,7 +85,7 @@ const MysV5Product = () => {
             value={view}
             onChange={(e) => {
               dispatch(setView(e.target.value));
-              localStorage.setItem("mysV5ProductView", JSON.stringify(e.target.value));
+              localStorage.setItem("mysV4ProductView", JSON.stringify(e.target.value));
             }}
             className="border border-blue-400 p-1 rounded"
           >
@@ -100,4 +115,4 @@ const MysV5Product = () => {
   );
 };
 
-export default MysV5Product;
+export default MysV4Product;
