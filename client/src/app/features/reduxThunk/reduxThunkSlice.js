@@ -1,10 +1,10 @@
 import { createAsyncThunk, createEntityAdapter, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-import { reduxThunk } from "../../../../config/constants";
+import { rdxt } from "../../../config/constants";
 
 export const getProductsThunk = createAsyncThunk("product/getProductsThunk", async (_, { rejectWithValue }) => {
   try {
-    const response = await axios.get(reduxThunk);
+    const response = await axios.get(rdxt);
     return response.data;
   } catch (error) {
     return rejectWithValue(error.message);
@@ -13,7 +13,7 @@ export const getProductsThunk = createAsyncThunk("product/getProductsThunk", asy
 
 export const postProductThunk = createAsyncThunk("product/postProductThunk", async (data, { rejectWithValue }) => {
   try {
-    const response = await axios.post(reduxThunk, data);
+    const response = await axios.post(rdxt, data);
     return { data: response.data, message: `Berhasil post product ${response.data.name}` };
   } catch (error) {
     return rejectWithValue(error.message);
@@ -22,7 +22,7 @@ export const postProductThunk = createAsyncThunk("product/postProductThunk", asy
 
 export const deleteProductThunk = createAsyncThunk("product/deleteProductThunk", async (item, { rejectWithValue }) => {
   try {
-    await axios.delete(`${reduxThunk}/${item.id}`);
+    await axios.delete(`${rdxt}/${item.id}`);
     return { data: item, message: `Berhasil hapus produk ${item.name}` };
   } catch (error) {
     return rejectWithValue(error.message);
@@ -31,7 +31,7 @@ export const deleteProductThunk = createAsyncThunk("product/deleteProductThunk",
 
 export const updateProductThunk = createAsyncThunk("product/updateProductThunk", async (data, { rejectWithValue }) => {
   try {
-    const response = await axios.patch(`${reduxThunk}/${data.id}`, data);
+    const response = await axios.patch(`${rdxt}/${data.id}`, data);
     return { data: response.data, message: `Berhasil update produk ${response.data.name}` };
   } catch (error) {
     return rejectWithValue(error.message);

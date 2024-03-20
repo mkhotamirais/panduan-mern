@@ -13,7 +13,7 @@ const NnLayout = () => {
 
   return (
     <section id="msa">
-      <H1>mongodb</H1>
+      <H1>netninja</H1>
       <Breadcrumb />
       <div className="flex justify-between items-center">
         <Menus menus={menus} />
@@ -30,7 +30,7 @@ const NnLayout = () => {
           )}
         </div>
       </div>
-      <div>{user?.user?.email}</div>
+      <div>halo {user?.user?.email}</div>
       <div>
         <Outlet />
       </div>

@@ -14,13 +14,13 @@ const logEvents = (message, fileName) => {
 };
 
 const logSuccess = (req, res, next) => {
-  logEvents(`${req.method}\t${req.headers.origin}\t${req.url}`, "log-success.txt");
+  logEvents(`${req.method}\t${req.headers.origin}\t${req.url}`, "log-success.log");
   console.log(`${req.method}\t${req.path}`);
   next();
 };
 
 const logError = (err, req, res, next) => {
-  logEvents(`${err.name}: ${err.message}`, "log-error.txt");
+  logEvents(`${err.name}: ${err.message}`, "log-error.log");
   console.log(err.stack);
   res.status(500).json({ message: err.message });
 };

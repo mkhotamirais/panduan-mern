@@ -89,6 +89,23 @@ import MysV4UserDetail from "./pages/fundamentals/mysql/v4/MysV4UserDetail.jsx";
 import MysV4UserUpdate from "./pages/fundamentals/mysql/v4/MysV4UserUpdate.jsx";
 import MysV4Signin from "./pages/fundamentals/mysql/v4/MysV4Signin.jsx";
 import MysV4Signup from "./pages/fundamentals/mysql/v4/MysV4Signup.jsx";
+import DgLayout from "./pages/merns/davegray/DgLayout.jsx";
+import DgHome from "./pages/merns/davegray/DgHome.jsx";
+import DgV2Note from "./pages/merns/davegray/note/DgV2Note.jsx";
+import DgV2Employee from "./pages/merns/davegray/employee/DgV2Employee.jsx";
+import DgV2User from "./pages/merns/davegray/user/DgV2User.jsx";
+import DgV2Signin from "./pages/merns/davegray/auth/DgV2Signin.jsx";
+import DgV2Signup from "./pages/merns/davegray/auth/DgV2Signup.jsx";
+import DgV2UserUpdate from "./pages/merns/davegray/user/DgV2UserUpdate.jsx";
+import Prefecth from "./pages/merns/davegray/Prefecth.jsx";
+import EdwLayout from "./pages/merns/eduwork/EdwLayout.jsx";
+import EdwHome from "./pages/merns/eduwork/EdwHome.jsx";
+import EdwProduct from "./pages/merns/eduwork/product/EdwProduct.jsx";
+import EdwCategory from "./pages/merns/eduwork/category/EdwCategory.jsx";
+import EdwTag from "./pages/merns/eduwork/tag/EdwTag.jsx";
+import EdwProductDetail from "./pages/merns/eduwork/product/EdwProductDetail.jsx";
+import EdwProductPost from "./pages/merns/eduwork/product/EdwProductPost.jsx";
+import EdwProductUpdate from "./pages/merns/eduwork/product/EdwProductUpdate.jsx";
 
 axios.defaults.withCredentials = true;
 
@@ -98,6 +115,7 @@ const router = createBrowserRouter(
       <Route path="/" element={<App />} errorElement={<ErrorBoundary />}>
         <Route path="/" element={<HomeLayout />}>
           <Route index element={<Home />} />
+          {/* basic */}
           <Route path="freecodecamp" element={<Freecodecamp />}>
             <Route index element={<FccHome />} />
             <Route path="book">
@@ -107,6 +125,7 @@ const router = createBrowserRouter(
               <Route path="update/:id" element={<FccBookUpdate />} />
             </Route>
           </Route>
+          {/* auth */}
           <Route path="netninja" element={<NnLayout />}>
             <Route index element={<NnHome />} />
             <Route
@@ -135,6 +154,23 @@ const router = createBrowserRouter(
               <Route path="detail/:id" element={<ReduxThunkDetail />} />
             </Route>
           </Route>
+          <Route path="davegray" element={<DgLayout />}>
+            <Route index element={<DgHome />} />
+            <Route element={<Prefecth />}>
+              <Route path="dg-v2-note">
+                <Route index element={<DgV2Note />} />
+              </Route>
+              <Route path="dg-v2-employee">
+                <Route index element={<DgV2Employee />} />
+              </Route>
+              <Route path="dg-v2-user">
+                <Route index element={<DgV2User />} />
+                <Route path="update/:id" element={<DgV2UserUpdate />} />
+              </Route>
+            </Route>
+            <Route path="dg-v2-signin" element={<DgV2Signin />} />
+            <Route path="dg-v2-signup" element={<DgV2Signup />} />
+          </Route>
           <Route path="redux-rtk" element={<ReduxRtk />}>
             <Route index element={<ReduxRtkHome />} />
             <Route path="product">
@@ -142,6 +178,21 @@ const router = createBrowserRouter(
               <Route path="detail/:id" element={<ReduxRtkProductDetail />} />
               <Route path="update/:id" element={<ReduxRtkProductUpdate />} />
               <Route path="post" element={<ReduxRtkProductPost />} />
+            </Route>
+          </Route>
+          <Route path="eduwork" element={<EdwLayout />}>
+            <Route index element={<EdwHome />} />
+            <Route path="edw-product">
+              <Route index element={<EdwProduct />} />
+              <Route path="detail/:id" element={<EdwProductDetail />} />
+              <Route path="post" element={<EdwProductPost />} />
+              <Route path="update/:id" element={<EdwProductUpdate />} />
+            </Route>
+            <Route path="edw-category">
+              <Route index element={<EdwCategory />} />
+            </Route>
+            <Route path="edw-tag">
+              <Route index element={<EdwTag />} />
             </Route>
           </Route>
           <Route path="mongodb" element={<MongodbLayout />}>

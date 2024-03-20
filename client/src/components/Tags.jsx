@@ -26,28 +26,62 @@ export const Par = ({ children = "Par", className }) => <p className={`${classNa
 Par.propTypes;
 
 export const Label = ({ children = "Label", id, className }) => (
-  <label id={id} className={`${className} leading-relaxed font-medium capitalize text-gray-600`}>
+  <label id={id} className={`${className} leading-relaxed font-medium capitalize text-gray-600 flex items-center gap-1`}>
     {children}
   </label>
 );
 Label.propTypes;
 
-export const Input = ({ type = "text", id, value, onChange, placeholder, autoComplete = "off", className }) => (
+export const Input = ({
+  type = "text",
+  id,
+  value,
+  onChange,
+  onFocus,
+  onBlur,
+  placeholder = "input",
+  autoComplete = "off",
+  required = true,
+  ariaInvalid,
+  ariaDescribedby,
+  className,
+}) => (
   <input
     type={type}
     id={id}
     name={id}
     value={value}
     onChange={onChange}
+    onFocus={onFocus}
+    onBlur={onBlur}
     autoComplete={autoComplete}
     placeholder={placeholder}
+    required={required}
+    aria-invalid={ariaInvalid}
+    aria-describedby={ariaDescribedby}
     className={`${className} mb-2 border border-slate-300 focus:outline-blue-300 rounded p-2 w-full`}
   />
 );
 Input.propTypes;
 
 export const InputRef = forwardRef(
-  ({ type = "text", id, value, onChange, placeholder, autoComplete = "off", className }, ref) => (
+  (
+    {
+      type = "text",
+      id,
+      value,
+      onChange,
+      onFocus,
+      onBlur,
+      placeholder = "input",
+      autoComplete = "off",
+      required = true,
+      ariaInvalid,
+      ariaDescribedby,
+      className,
+    },
+    ref
+  ) => (
     <input
       ref={ref}
       type={type}
@@ -55,8 +89,13 @@ export const InputRef = forwardRef(
       name={id}
       value={value}
       onChange={onChange}
+      onFocus={onFocus}
+      onBlur={onBlur}
       autoComplete={autoComplete}
       placeholder={placeholder}
+      aria-invalid={ariaInvalid}
+      aria-describedby={ariaDescribedby}
+      required={required}
       className={`${className} mb-2 border border-slate-300 focus:outline-blue-300 rounded p-2 w-full`}
     />
   )
@@ -98,11 +137,13 @@ export const BtnLink = ({ children = "BtnLink", to, onClick, className }) => (
 );
 BtnLink.propTypes;
 
-export const Select = ({ children = "Select", className, id, value, onChange }) => (
+export const Select = ({ children = "Select", className, multiple, size, id, value, onChange }) => (
   <select
     name={id}
     id={id}
     value={value}
+    multiple={multiple}
+    size={size}
     onChange={onChange}
     className={`${className} border border-slate-300 focus:outline-blue-300  rounded p-2 block mb-2 w-full`}
   >

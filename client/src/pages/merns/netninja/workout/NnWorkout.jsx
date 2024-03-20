@@ -2,8 +2,8 @@ import { useEffect } from "react";
 import NnWorkoutCard from "./NnWorkoutCard";
 import { GridCard, PostBtn } from "../../../../components/Components";
 import useWorkoutContext from "../hooks/useNnV1WorkoutContext";
-import { nn } from "../../../../../config/constants";
 import useNnV1AuthContext from "../hooks/useNnV1AuthContext";
+import { nn } from "../../../../config/constants";
 
 const NnWorkout = () => {
   const { workouts, dispatch } = useWorkoutContext();

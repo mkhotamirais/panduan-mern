@@ -3,8 +3,10 @@ const { port } = require("./config/constants.");
 const app = express();
 const cors = require("cors");
 const db = require("./config");
+const { corsOptions, credentials } = require("./config/origins");
 
-app.use(cors());
+app.use(credentials);
+app.use(cors(corsOptions));
 // app.use(cors({
 //   origin: "http://localhost:3000",
 //   methods: ['GET', "POST", "PUT", "PATCH", "DELETE"],

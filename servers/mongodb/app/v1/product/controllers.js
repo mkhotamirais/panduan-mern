@@ -3,7 +3,7 @@ const Product = require("./model");
 
 const getProducts = async (req, res) => {
   try {
-    const data = await Product.find().select("-__v");
+    const data = await Product.find().select("-__v").sort({ updatedAt: -1 });
     ok(res, `get data`, data);
   } catch (error) {
     badRequest(res, error.message);

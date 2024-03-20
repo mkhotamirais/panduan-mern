@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-import { fcc } from "../../../../config/constants";
+import { fcc } from "../../../config/constants";
 
 export const v1FccGetBooks = createAsyncThunk("v1FccBook/v1FccGetBooks", async (_, { rejectWithValue }) => {
   try {

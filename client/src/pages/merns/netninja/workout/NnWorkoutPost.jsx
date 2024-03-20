@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { Button, Input, InputRef, Label } from "../../../../components/Tags";
 import { useSnackbar } from "notistack";
 import { useNavigate } from "react-router-dom";
-import { nn } from "../../../../../config/constants";
+import { nn } from "../../../../config/constants";
 import useNnV1WorkoutContext from "../hooks/useNnV1WorkoutContext";
 import useNnV1AuthContext from "../hooks/useNnV1AuthContext";
 

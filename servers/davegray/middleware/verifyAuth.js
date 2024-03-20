@@ -5,10 +5,11 @@ const { unauthorized, forbidden } = require("../app/utils");
 const verifyToken = (req, res, next) => {
   const authHeader = req.headers.authorization || req.headers.Authorization;
   if (!authHeader?.startsWith("Bearer ")) return unauthorized(res, "no token");
+  // return res.status(400).json({ message: "error", data: "error" });
   const token = authHeader.split(" ")[1];
   jwt.verify(token, ats, (err, decoded) => {
     if (err) return forbidden(res);
-    req.user = decoded.username;
+    req.username = decoded.username;
     req.roles = decoded.roles;
     next();
   });

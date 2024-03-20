@@ -3,11 +3,11 @@ const { port } = require("./config/constants");
 const app = express();
 const path = require("path");
 const { logSuccess, logError } = require("./middleware/logger");
-const { credentials, corsOptions } = require("./middleware/origins");
 const cors = require("cors");
 const { verifyToken } = require("./middleware/verifyAuth");
 const cookieParser = require("cookie-parser");
 const db = require("./config");
+const { credentials, corsOptions } = require("./config/origins");
 
 // ---middleware berjalan seperti air terjun dari atas ke bawah menggunakan app.use(middleware) jangan lupa next()
 
@@ -39,16 +39,13 @@ app.get("^/$|/index(.html)?", (req, res) => {
 //   res.sendFile(path.join(__dirname, "views", "subdir", "index.html"));
 // });
 
-app.use("/v0/employee", verifyToken, require("./app/v0/v0Employee/router"));
-app.use("/v0/user", require("./app/v0/v0User/router"));
-app.use("/v0/auth", require("./app/v0/v0Auth/router"));
-
-app.use("/v1/auth", require("./app/v1/v1Auth/router"));
-app.use("/v1/employee", require("./app/v1/v1Auth/router"));
-
-app.use("/v2/user", require("./app/v2/v2User/router"));
-app.use("/v2/auth", require("./app/v2/v2Auth/router"));
-app.use("/v2/note", require("./app/v2/v2Note/router"));
+app.use("/davegray/v1/employee", require("./app/v1/employee/router"));
+app.use("/davegray/v1/user", require("./app/v1/user/router"));
+app.use("/davegray/v1/auth", require("./app/v1/auth/router"));
+app.use("/davegray/v2/user", require("./app/v2/user/router"));
+app.use("/davegray/v2/auth", require("./app/v2/auth/router"));
+app.use("/davegray/v2/note", require("./app/v2/note/router"));
+app.use("/davegray/v2/employee", require("./app/v2/employee/router"));
 
 // --- custom middleware
 // const mw1 = (req, res, next) => {

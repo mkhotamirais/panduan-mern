@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-import { md } from "../../../../config/constants";
+import { md } from "../../../config/constants";
 
 export const getCategories = createAsyncThunk("categories/getCategories", async (_, { rejectWithValue }) => {
   try {

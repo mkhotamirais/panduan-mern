@@ -2,6 +2,7 @@ import { FaTrash } from "react-icons/fa";
 import useWorkoutContext from "../hooks/useNnV1WorkoutContext";
 import { formatDistanceToNow } from "date-fns";
 import useNnV1AuthContext from "../hooks/useNnV1AuthContext";
+import { nn } from "../../../../config/constants";
 
 const NnWorkoutCard = ({ wo }) => {
   const { dispatch } = useWorkoutContext();
@@ -11,7 +12,7 @@ const NnWorkoutCard = ({ wo }) => {
     if (!user) {
       return;
     }
-    const response = await fetch(`http://localhost:5500/netninja/v1/workouts/${wo?._id}`, {
+    const response = await fetch(`${nn}/v1/workouts/${wo?._id}`, {
       method: "DELETE",
       headers: { Authorization: `Bearer ${user?.token}` },
     });

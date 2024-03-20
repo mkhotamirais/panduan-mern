@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 
 const basicList = ["freecodecamp", "redux thunk", "redux rtk"];
 const filesList = ["enam", "tujuh", "delapan"];
-const authList = ["netninja", "sepuhl"];
+const authList = ["netninja", "davegray", "eduwork"];
 const fundamentalList = ["mongodb", "mysql"];
 
 export const SidebarContentList = ({ title, data }) => {

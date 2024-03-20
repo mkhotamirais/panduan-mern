@@ -109,7 +109,7 @@ export const Menus = ({ menus }) => {
     setActive(pathArr[2].split("-").join(" "));
   }, [pathArr]);
   return (
-    <div className="text-sm flex gap-1 py-1 mb-2 text-gray-700 overflow-x-scroll">
+    <div className="text-sm flex gap-1 py-1 text-gray-700 overflow-x-scroll">
       {menus.map((m) => (
         <Link
           onClick={() => setActive(m)}

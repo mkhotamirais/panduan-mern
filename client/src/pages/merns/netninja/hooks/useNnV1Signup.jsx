@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { nn } from "../../../../../config/constants";
+import { nn } from "../../../../config/constants";
 import useAuthContext from "./useNnV1AuthContext";
 import { useSnackbar } from "notistack";
 import { useNavigate } from "react-router-dom";
