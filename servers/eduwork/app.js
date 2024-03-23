@@ -36,7 +36,7 @@ app.use("/eduwork/delivery-address", require("./app/deliveryAddress/router"));
 // app.use('/', require("./routes/index"));
 // app.use('/users', require("./routes/users"));
 
-// home
+// // home
 app.use("/", (req, res) => {
   res.render("index", {
     title: "Eduwork Api Service",

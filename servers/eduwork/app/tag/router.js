@@ -6,7 +6,7 @@ router.get("/", getTags);
 // router.post("/", police_check("create", "Tag"), postTag);
 router.post("/", postTag);
 // router.put("/:id", police_check("update", "Tag"), updateTag);
-router.put("/:id", updateTag);
+router.patch("/:id", updateTag);
 // router.delete("/:id", police_check("delete", "Tag"), deleteTag);
 router.delete("/:id", deleteTag);
 

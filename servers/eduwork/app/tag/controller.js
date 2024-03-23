@@ -4,8 +4,8 @@ const Tag = require("./model.js");
 const getTags = async (req, res, next) => {
   try {
     let count = await Tag.find().countDocuments();
-    let tag = await Tag.find().select("-__v");
-    return res.json({ count, tag });
+    let tag = await Tag.find().select("-__v").sort({ updatedAt: -1 });
+    return res.json({ count, data: tag });
   } catch (err) {
     handleErr(err, res);
     next(err);

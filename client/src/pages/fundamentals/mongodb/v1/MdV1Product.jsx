@@ -23,7 +23,7 @@ const MdV1Product = () => {
   if (status === "loading") content = <Loading />;
   else if (status === "failed") content = <Err>{error}</Err>;
   else if (status === "succeeded") {
-    if (products.length > 0) {
+    if (products?.length > 0) {
       const renderedProductsCard = products && sortedData?.map((item) => <MdV1ProductCard key={item?._id} item={item} />);
       const renderedProductsTable =
         products && sortedData?.map((item, i) => <MdV1ProductTable key={item?._id} item={item} i={i} />);
