@@ -1,9 +1,9 @@
 const { police_check } = require("../mw.js");
-const { update, index } = require("./controller.js");
+const { updateCart, getCart } = require("./controller.js");
 
 const router = require("express").Router();
 
-router.put("/", police_check("update", "Cart"), update);
-router.get("/", police_check("read", "Cart"), index);
+router.patch("/", police_check("update", "Cart"), updateCart);
+router.get("/", police_check("read", "Cart"), getCart);
 
 module.exports = router;

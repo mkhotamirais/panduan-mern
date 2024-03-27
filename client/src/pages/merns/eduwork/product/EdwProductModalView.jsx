@@ -1,4 +1,4 @@
-import { Modal, TimeAgo } from "../../../../components/Components";
+import { Badge, Modal, TimeAgo } from "../../../../components/Components";
 
 const EdwProductModalView = ({ item, onClose }) => {
   return (
@@ -11,6 +11,13 @@ const EdwProductModalView = ({ item, onClose }) => {
       <div>{item?.name}</div>
       <div>{item?.price?.toLocaleString("id-ID")}</div>
       <div>{item?.description}</div>
+      <div className="capitalize">Category: {item?.category?.name}</div>
+      <div>
+        Tags:{" "}
+        {item?.tags?.map((t) => (
+          <Badge key={t?._id} item={t} />
+        ))}
+      </div>
       <div className="flex flex-col text-sm">
         <TimeAgo time={item?.createdAt} />
         <TimeAgo time={item?.updatedAt} />

@@ -1,5 +1,5 @@
 const url = {
-  mysql: "http://localhost:5500/mysql",
+  mysql: "http://localhost:5000/mysql",
   netninja: "http://localhost:5500/netninja",
   freecodecoam: "http://localhost:5500/freecodecamp",
   mongodb: "http://localhost:5500/mongodb",

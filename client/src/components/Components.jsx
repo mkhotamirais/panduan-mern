@@ -221,3 +221,14 @@ export const ExternalRefBtn = ({ href, icon, text }) => (
   </a>
 );
 ExternalRefBtn.propTypes;
+
+export const Badge = ({ className = "bg-gray-500", onClick, item }) => (
+  <span
+    onClick={onClick}
+    key={item._id}
+    className={`${className} inline-flex items-center justify-center leading-none text-xs p-1 rounded-md mx-[0.1rem] text-white`}
+  >
+    {item.name}
+  </span>
+);
+Badge.propTypes;

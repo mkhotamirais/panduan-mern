@@ -106,6 +106,18 @@ import EdwProduct from "./pages/merns/eduwork/product/EdwProduct.jsx";
 import EdwProductDetail from "./pages/merns/eduwork/product/EdwProductDetail.jsx";
 import EdwProductPost from "./pages/merns/eduwork/product/EdwProductPost.jsx";
 import EdwProductUpdate from "./pages/merns/eduwork/product/EdwProductUpdate.jsx";
+import EdwUser from "./pages/merns/eduwork/user/EdwUser.jsx";
+import EdwUserDetail from "./pages/merns/eduwork/user/EdwUserDetail.jsx";
+import EdwProductPre from "./pages/merns/eduwork/product/EdwProductPre.jsx";
+import EdwUserPre from "./pages/merns/eduwork/user/EdwUserPre.jsx";
+import EdwSignin from "./pages/merns/eduwork/auth/EdwSignin.jsx";
+import EdwSignup from "./pages/merns/eduwork/auth/EdwSignup.jsx";
+import EdwAccount from "./pages/merns/eduwork/account/EdwAccount.jsx";
+import EdwAccountLayout from "./pages/merns/eduwork/account/EdwAccountLayout.jsx";
+import EdwPemesanan from "./pages/merns/eduwork/account/pemesanan/EdwPemesanan.jsx";
+import EdwAddress from "./pages/merns/eduwork/account/address/EdwAddress.jsx";
+import EdwAddressPost from "./pages/merns/eduwork/account/address/EdwAddressPost.jsx";
+import EdwCart from "./pages/merns/eduwork/cart/EdwCart.jsx";
 
 axios.defaults.withCredentials = true;
 
@@ -182,18 +194,55 @@ const router = createBrowserRouter(
           </Route>
           <Route path="eduwork" element={<EdwLayout />}>
             <Route index element={<EdwHome />} />
-            <Route path="edw-product">
+            <Route path="edw-account" element={<EdwAccountLayout />}>
+              <Route index element={<EdwAccount />} />
+              <Route path="pemesanan" element={<EdwPemesanan />} />
+              <Route path="alamat">
+                <Route index element={<EdwAddress />} />
+                <Route path="post" element={<EdwAddressPost />} />
+              </Route>
+            </Route>
+            <Route path="edw-product" element={<EdwProductPre />}>
               <Route index element={<EdwProduct />} />
-              <Route path="detail/:id" element={<EdwProductDetail />} />
-              <Route path="post" element={<EdwProductPost />} />
-              <Route path="update/:id" element={<EdwProductUpdate />} />
+              <Route
+                loader={() => {
+                  const cred = JSON.parse(localStorage.getItem("edwToken"));
+                  if (!cred?.signed) {
+                    alert(`Silahkan signin dahulu`);
+                    throw redirect("/eduwork/edw-signin");
+                  }
+                  return { cred };
+                }}
+              >
+                <Route path="detail/:id" element={<EdwProductDetail />} />
+                <Route path="post" element={<EdwProductPost />} />
+                <Route path="update/:id" element={<EdwProductUpdate />} />
+              </Route>
             </Route>
-            <Route path="edw-category">
-              <Route index element={<EdwCategory />} />
+            <Route
+              loader={() => {
+                const cred = JSON.parse(localStorage.getItem("edwToken"));
+                if (!cred?.signed) {
+                  alert(`Silahkan signin dahulu`);
+                  throw redirect("/eduwork/edw-signin");
+                }
+                return { cred };
+              }}
+            >
+              <Route path="edw-category">
+                <Route index element={<EdwCategory />} />
+              </Route>
+              <Route path="edw-tag">
+                <Route index element={<EdwTag />} />
+              </Route>
+              <Route path="edw-user" element={<EdwUserPre />}>
+                <Route index element={<EdwUser />} />
+                <Route path="detail/:id" element={<EdwUserDetail />} />
+              </Route>
+              <Route path="edw-cart" element={<EdwCart />} />
             </Route>
-            <Route path="edw-tag">
-              <Route index element={<EdwTag />} />
-            </Route>
+            <Route path="edw-signin" element={<EdwSignin />} />
+            <Route path="edw-signup" element={<EdwSignup />} />
           </Route>
           <Route path="mongodb" element={<MongodbLayout />}>
             <Route index element={<Mongodb />} />

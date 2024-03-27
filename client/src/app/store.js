@@ -28,6 +28,10 @@ import dgV2AuthReducer from "./features/davegray/dgV2AuthSlice";
 import edwProductReducer from "./features/eduwork/edwProductSlice";
 import edwCategoryReducer from "./features/eduwork/edwCategorySlice";
 import edwTagReducer from "./features/eduwork/edwTagSlice";
+import edwUserReducer from "./features/eduwork/edwUserSlice";
+import edwAuthReducer from "./features/eduwork/edwAuthSlice";
+import edwAddressReducer from "./features/eduwork/edwAddressSlice";
+import edwCartReducer from "./features/eduwork/edwCartSlice";
 
 export const store = configureStore({
   reducer: {
@@ -58,6 +62,10 @@ export const store = configureStore({
     edwProduct: edwProductReducer,
     edwCategory: edwCategoryReducer,
     edwTag: edwTagReducer,
+    edwUser: edwUserReducer,
+    edwAuth: edwAuthReducer,
+    edwAddress: edwAddressReducer,
+    edwCart: edwCartReducer,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat([apiSlice.middleware, dgApiSlice.middleware]),
   devTools: true,

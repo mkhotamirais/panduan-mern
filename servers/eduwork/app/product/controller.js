@@ -19,15 +19,16 @@ const getProducts = async (req, res, next) => {
       tags = await Tag.find({ name: { $in: tags } });
       criteria = { ...criteria, tags: { $in: tags.map((tag) => tag._id) } };
     }
-    let count = await Product.find(criteria).countDocuments();
+    let count = await Product.find().countDocuments();
+    let countCriteria = await Product.find(criteria).countDocuments();
     let products = await Product.find(criteria)
       .sort({ createdAt: -1 })
       .select("-__v")
       .skip(parseInt(skip))
       .limit(parseInt(limit))
-      .populate({ path: "category", select: "-__v" })
-      .populate({ path: "tags", select: "-__v" });
-    return res.json({ count, data: products });
+      .populate({ path: "tags", select: ["_id", "name"] })
+      .populate({ path: "category", select: ["_id", "name"] });
+    return res.json({ count, countCriteria, data: products });
   } catch (err) {
     next(err);
   }
@@ -253,6 +254,7 @@ const updateProduct = async (req, res, next) => {
     } catch (err) {
       if (existsSync(pathFile + ext)) unlinkSync(pathFile + ext);
       if (existsSync(pathFile)) unlinkSync(pathFile);
+      console.log(err.message);
       handleErr(err, res);
       next(err);
     }

@@ -44,21 +44,10 @@ const updateDeliveryAddress = async (req, res, next) => {
   try {
     let { _id, ...payload } = req.body;
     let address = await DeliveryAddress.findById(req.params.id);
-    let subjectAddress = subject("deliveryAddress", {
-      ...address,
-      user_id: address.user,
-    });
+    let subjectAddress = subject("deliveryAddress", { ...address, user_id: address.user });
     let policy = policyfor(req.user);
-    if (!policy.can("update", subjectAddress)) {
-      return res.json({
-        error: 1,
-        message: "You are not allowed to modify this resource",
-      });
-    }
-    address = await DeliveryAddress.findByIdAndUpdate(req.params.id, payload, {
-      new: true,
-      runValidators: true,
-    });
+    if (!policy.can("update", subjectAddress)) return res.json({ error: 1, message: "Not allowed to modify this resource" });
+    address = await DeliveryAddress.findByIdAndUpdate(req.params.id, payload, { new: true, runValidators: true });
     return res.json({ message: "update address success", address });
   } catch (err) {
     handleErr(err, res);
@@ -69,17 +58,9 @@ const updateDeliveryAddress = async (req, res, next) => {
 const deleteDeliveryAddress = async (req, res, next) => {
   try {
     let address = await DeliveryAddress.findById(req.params.id);
-    let subjectAddress = subject("deliveryAddress", {
-      ...address,
-      user_id: address.user,
-    });
+    let subjectAddress = subject("deliveryAddress", { ...address, user_id: address.user });
     let policy = policyfor(req.user);
-    if (!policy.can("delete", subjectAddress)) {
-      return res.json({
-        error: 1,
-        message: "You are not allowed to modify this resource",
-      });
-    }
+    if (!policy.can("delete", subjectAddress)) return res.json({ error: 1, message: "Not allowed to modify this resource" });
     address = await DeliveryAddress.findByIdAndDelete(req.params.id);
     res.json({ message: "delete address success", address });
   } catch (err) {

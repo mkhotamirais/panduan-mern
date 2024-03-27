@@ -10,7 +10,7 @@ const router = require("express").Router();
 
 router.get("/", police_check("view", "deliveryAddress"), getDelivaryAddresses);
 router.post("/", police_check("create", "deliveryAddress"), postDeliveryAddress);
-router.put("/:id", police_check("update", "deliveryAddress"), updateDeliveryAddress);
+router.patch("/:id", police_check("update", "deliveryAddress"), updateDeliveryAddress);
 router.delete("/:id", police_check("delete", "deliveryAddress"), deleteDeliveryAddress);
 
 module.exports = router;

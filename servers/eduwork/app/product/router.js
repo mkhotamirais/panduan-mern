@@ -7,11 +7,8 @@ const upload = multer({ dest: path.join(rootPath, "public/images") }).single("im
 const { police_check } = require("../mw.js");
 
 router.get("/", getProducts);
-// router.post("/", police_check("create", "Product"), upload, postProduct);
-router.post("/", upload, postProduct);
-// router.put("/:id", police_check("update", "Product"), upload, updateProduct);
-router.patch("/:id", upload, updateProduct);
-// router.delete("/:id", police_check("delete", "Product"), deleteProduct);
-router.delete("/:id", deleteProduct);
+router.post("/", police_check("create", "Product"), upload, postProduct);
+router.patch("/:id", police_check("update", "Product"), upload, updateProduct);
+router.delete("/:id", police_check("delete", "Product"), deleteProduct);
 
 module.exports = router;

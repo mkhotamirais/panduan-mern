@@ -10,16 +10,12 @@ const handleErr = (err, res) => {
   }
 };
 
-function getToken(req) {
-  let token = req.headers.authorization ? req.headers.authorization.replace("Bearer ", "") : null;
-  return token && token.length ? token : null;
-}
-
 const policies = {
   guest(user, { can }) {
     can("read", "Product");
   },
   user(user, { can }) {
+    can("create", "Category");
     can("view", "Order");
     can("create", "Order");
     can("read", "Order", { user_id: user._id });
@@ -47,4 +43,4 @@ const policyfor = (user) => {
   return new Ability(builder.rules);
 };
 
-module.exports = { handleErr, getToken, policyfor };
+module.exports = { handleErr, policyfor };

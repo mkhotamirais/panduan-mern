@@ -5,7 +5,7 @@ import { edw } from "../../../config/constants";
 export const getTags = createAsyncThunk("tags/getTags", async (_, { rejectWithValue }) => {
   try {
     const response = await axios.get(`${edw}/tag`);
-    console.log(response);
+    // console.log(response);
     return response.data.data;
   } catch (error) {
     return rejectWithValue(error?.response?.data?.message || error?.message);

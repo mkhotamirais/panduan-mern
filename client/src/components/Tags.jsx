@@ -41,7 +41,7 @@ export const Input = ({
   onBlur,
   placeholder = "input",
   autoComplete = "off",
-  required = true,
+  required,
   ariaInvalid,
   ariaDescribedby,
   className,
@@ -103,12 +103,13 @@ export const InputRef = forwardRef(
 InputRef.propTypes;
 InputRef.displayName;
 
-export const Textarea = ({ className, id, value, onChange }) => (
+export const Textarea = ({ className, id, value, onChange, placeholder }) => (
   <textarea
     name={id}
     id={id}
     value={value}
     onChange={onChange}
+    placeholder={placeholder}
     className={`${className} mb-2 border border-slate-300 focus:outline-blue-300 rounded p-2 w-full`}
   />
 );
