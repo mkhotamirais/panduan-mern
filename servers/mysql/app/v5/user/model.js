@@ -8,7 +8,7 @@ const V5User = conn.define(
     name: { type: DataTypes.STRING, allowNull: false, validate: { notEmpty: true, len: [3, 100] } },
     email: { type: DataTypes.STRING, allowNull: false, validate: { notEmpty: true, isEmail: true } },
     password: { type: DataTypes.STRING, allowNull: false, validate: { notEmpty: true } },
-    role: { type: DataTypes.STRING, allowNull: false, validate: { notEmpty: true } },
+    role: { type: DataTypes.STRING, allowNull: false, defaultValue: "user", validate: { notEmpty: true } },
   },
   { freezeTableName: true }
 );

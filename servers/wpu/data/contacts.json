@@ -1,1 +1,6 @@
-[{"id":"3","nama":"siti","noHp":"6287712344321","email":"siti@gmail.com"},{"id":"4b1d5d3e-3cee-4cfa-989f-0061b8666ea3","nama":"iis update","email":"iis@gmail.com","noHp":"087712345123"},{"nama":"ahmad","email":"ahmad@gmail.com","noHp":"087766606133","id":"f4033f6e-ae98-4506-9ade-428991d4ca7c"}]
+[
+  { "id": "3", "nama": "siti", "noHp": "6287712344321", "email": "siti@gmail.com" },
+  { "id": "4b1d5d3e-3cee-4cfa-989f-0061b8666ea3", "nama": "iis update", "email": "iis@gmail.com", "noHp": "087712345123" },
+  { "nama": "ahmad", "email": "ahmad@gmail.com", "noHp": "087766606133", "id": "f4033f6e-ae98-4506-9ade-428991d4ca7c" },
+  { "nama": "kkk", "email": "kkk@gmail.com", "noHp": "0877555599123", "id": "5af8de17-db2e-4ac9-9a77-107bb71f09ed" }
+]
